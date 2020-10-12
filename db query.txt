@@ -1,0 +1,150 @@
+CREATE TABLE [dbo].[Customers] (
+    [customerID]   INT          IDENTITY (10000, 1) NOT NULL,
+    [fullName]     VARCHAR (50) NULL,
+    [email]        VARCHAR (50) NOT NULL,
+    [contactNo]    VARCHAR (50) NOT NULL,
+    [gender]       VARCHAR (50) NOT NULL,
+    [icNumber]     VARCHAR (50) NOT NULL,
+    [dob]          date NOT NULL,
+    [password]     VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([customerID] ASC)
+);
+
+
+
+CREATE TABLE [dbo].[Admins] (
+    [adminID]      INT          IDENTITY (10000, 1) NOT NULL,
+    [fullName]     VARCHAR (50) NOT NULL,
+    [email]        VARCHAR (50) NOT NULL,
+    [contactNo]    VARCHAR (50) NOT NULL,
+    [gender]       VARCHAR (50) NOT NULL,
+    [icNumber]     VARCHAR (50) NOT NULL,
+    [dob]          date NOT NULL,
+    [password]     VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([adminID] ASC)
+);
+
+CREATE TABLE [dbo].[Rooms] (
+    [roomID]   INT          IDENTITY (10000, 1) NOT NULL,
+    [roomType]     VARCHAR (50) NOT NULL,
+    [address]      VARCHAR (max) NOT NULL,
+    [unitNumber]   VARCHAR (50) NOT NULL,
+    [status]       VARCHAR (50) NOT NULL, 
+    PRIMARY KEY CLUSTERED ([roomID] ASC)
+);
+
+CREATE TABLE [dbo].[RoomBookings] (
+    [bookingID]    INT          IDENTITY (10000, 1) NOT NULL,
+    [customerID]   INT NOT NULL,
+    [roomID]       INT NOT NULL,
+    [startDate]    date NOT NULL,
+    [endDate]      date NOT NULL,
+    [bookingDate]  date NOT NULL,
+    PRIMARY KEY CLUSTERED ([bookingID] ASC),
+    FOREIGN KEY ([customerID]) REFERENCES [dbo].[Customers] ([customerID]),
+    FOREIGN KEY ([roomID]) REFERENCES [dbo].[Rooms] ([roomID])
+);
+
+CREATE TABLE [dbo].[Payments] (
+    [paymentID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [bookingID]       INT NOT NULL, 
+    [paymentDate]     date NOT NULL,
+    [paymentAmount]   float NOT NULL,
+    [paymentDetails]  VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([paymentID] ASC),
+    FOREIGN KEY ([bookingID]) REFERENCES [dbo].[RoomBookings] ([bookingID])
+ 
+);
+
+
+
+CREATE TABLE [dbo].[ServiceRequests] (
+    [serviceReqID]   INT          IDENTITY (10000, 1) NOT NULL,
+    [customerID]     INT NOT NULL,
+    [roomID]         INT NOT NULL, 
+    [requestType]    VARCHAR (50) NOT NULL,
+    [requestDate]    date NOT NULL,
+    [descriptions]   VARCHAR (max) NOT NULL,
+    [actions]        VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([serviceReqID] ASC),
+    FOREIGN KEY ([customerID]) REFERENCES [dbo].[Customers] ([customerID]),
+    FOREIGN KEY ([roomID]) REFERENCES [dbo].[Rooms] ([roomID])
+);
+
+
+CREATE TABLE [dbo].[Chat] (
+    [chatID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [time]         time NOT NULL,
+    [sender]       VARCHAR (50) NOT NULL, 
+    [receiver]     VARCHAR (50) NOT NULL, 
+    PRIMARY KEY CLUSTERED ([chatID] ASC),
+     
+);
+
+CREATE TABLE [dbo].[Groups] (
+    [groupID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [groupName]     VARCHAR (50) NOT NULL,
+    [creator]       INT NOT NULL,  
+    PRIMARY KEY CLUSTERED ([groupID] ASC),
+    FOREIGN KEY ([creator]) REFERENCES [dbo].[Customers] ([customerID]),
+ 
+);
+
+CREATE TABLE [dbo].[GroupMembers] (
+    [groupID]       INT    NOT NULL,
+    [customerID]    INT NOT NULL, 
+    PRIMARY KEY CLUSTERED ([groupID] ,[customerID] ), 
+    FOREIGN KEY ([groupID]) REFERENCES [dbo].[Groups] ([groupID]),
+    FOREIGN KEY ([customerID]) REFERENCES [dbo].[Customers] ([customerID]),
+ 
+);
+
+CREATE TABLE [dbo].[Posting] (
+    [postID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [groupID]      INT NOT NULL, 
+    [postedBy]     INT NOT NULL,
+    [content]      VARCHAR (max) NOT NULL,  
+    [postDate]     date NOT NULL, 
+    PRIMARY KEY CLUSTERED ([postID] ASC), 
+    FOREIGN KEY ([groupID]) REFERENCES [dbo].[Groups] ([groupID]),
+    FOREIGN KEY ([postedBy]) REFERENCES [dbo].[Customers] ([customerID]),
+ 
+);
+
+CREATE TABLE [dbo].[Comments] (
+    [commentID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [postID]          INT NOT NULL, 
+    [commentedBy]     INT NOT NULL,
+    [content]         VARCHAR (max) NOT NULL,
+    [commentDate]     date NOT NULL,  
+    [commentTime]     time NOT NULL, 
+    PRIMARY KEY CLUSTERED ([commentID] ASC), 
+    FOREIGN KEY ([postID]) REFERENCES [dbo].[Posting] ([postID]),
+    FOREIGN KEY ([commentedBy]) REFERENCES [dbo].[Customers] ([customerID]),
+ 
+);
+
+CREATE TABLE [dbo].[Events] (
+    [eventID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [creator]       INT NOT NULL,
+    [eventName]     VARCHAR (50) NOT NULL,
+    [content]       VARCHAR (max) NOT NULL,  
+    [date]          date NOT NULL,
+    [time]          time NOT NULL,
+    PRIMARY KEY CLUSTERED ([eventID] ASC),
+    FOREIGN KEY ([creator]) REFERENCES [dbo].[Customers] ([customerID]),
+ 
+);
+
+CREATE TABLE [dbo].[ServiceRecords] (
+    [serviceRecordID]       INT          IDENTITY (10000, 1) NOT NULL,
+    [roomID]                INT NOT NULL,
+    [serviceReqID]          INT NOT NULL,
+    [description]           VARCHAR (max) NOT NULL,  
+    [date]                  date NOT NULL,
+    [time]                  time NOT NULL,
+    [cost]                  float NOT NULL,
+    PRIMARY KEY CLUSTERED ([serviceRecordID] ASC),
+    FOREIGN KEY ([roomID]) REFERENCES [dbo].[Rooms] ([roomID]),
+    FOREIGN KEY ([serviceReqID]) REFERENCES [dbo].[ServiceRequests] ([serviceReqID]),
+);
