@@ -67,14 +67,80 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addProperty.aspx" />
+    <Content Include="apartelPage1.aspx" />
+    <Content Include="apartelPage2.aspx" />
     <Content Include="App_Data\db.mdf" />
     <Content Include="App_Data\db_log.ldf">
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
+    <Content Include="colivingPage1.aspx" />
+    <Content Include="custChgPass.aspx" />
+    <Content Include="custLogin.aspx" />
+    <Content Include="custModifyProfile.aspx" />
+    <Content Include="custProfile.aspx" />
     <Content Include="custRegister.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="roomTypeSelect.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addProperty.aspx.cs">
+      <DependentUpon>addProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addProperty.aspx.designer.cs">
+      <DependentUpon>addProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="apartelPage1.aspx.cs">
+      <DependentUpon>apartelPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="apartelPage1.aspx.designer.cs">
+      <DependentUpon>apartelPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="apartelPage2.aspx.cs">
+      <DependentUpon>apartelPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="apartelPage2.aspx.designer.cs">
+      <DependentUpon>apartelPage2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="colivingPage1.aspx.cs">
+      <DependentUpon>colivingPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="colivingPage1.aspx.designer.cs">
+      <DependentUpon>colivingPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="custChgPass.aspx.cs">
+      <DependentUpon>custChgPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="custChgPass.aspx.designer.cs">
+      <DependentUpon>custChgPass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="custLogin.aspx.cs">
+      <DependentUpon>custLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="custLogin.aspx.designer.cs">
+      <DependentUpon>custLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="custModifyProfile.aspx.cs">
+      <DependentUpon>custModifyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="custModifyProfile.aspx.designer.cs">
+      <DependentUpon>custModifyProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="custProfile.aspx.cs">
+      <DependentUpon>custProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="custProfile.aspx.designer.cs">
+      <DependentUpon>custProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="custRegister.aspx.cs">
       <DependentUpon>custRegister.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -82,7 +148,17 @@
     <Compile Include="custRegister.aspx.designer.cs">
       <DependentUpon>custRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="roomTypeSelect.aspx.cs">
+      <DependentUpon>roomTypeSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roomTypeSelect.aspx.designer.cs">
+      <DependentUpon>roomTypeSelect.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
