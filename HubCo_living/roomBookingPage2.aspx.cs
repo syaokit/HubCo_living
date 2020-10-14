@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
-    public partial class apartelPage1 : System.Web.UI.Page
+    public partial class roomBookingPage2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,19 +19,23 @@ namespace HubCo_living
                 RepeaterData();
             }
 
-           
-          
         }
 
         private void RepeaterData()
         {
+            String location = Application["locationInput"].ToString();
+            String roomType = Application["roomType"].ToString();
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
-                SqlCommand cmd = new SqlCommand("select * from ( select a.*, b.imageContent, ROW_NUMBER() over(partition by a.roomID order by a.roomID) as rownum from Rooms a, PropertyImages b where a.roomID=b.roomID) as c where c.rownum=1;", con);
+                SqlCommand cmd = new SqlCommand("select * from ( select a.*, b.imageContent, ROW_NUMBER() over(partition by a.roomID order by a.roomID) as rownum from Rooms a, PropertyImages b where a.roomID=b.roomID and a.roomType = @roomType and a.city = @city) as c where c.rownum=1 ;", con);
                 con.Open();
+                cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@city", location);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                
                 da.Fill(ds);
                 rpt1.DataSource = ds;
                 rpt1.DataBind();
@@ -51,8 +55,8 @@ namespace HubCo_living
         {
             String roomID = e.CommandArgument.ToString();
             Application["roomID"] = roomID;
-            Response.Write("<script language=javascript>alert('Room ID "+roomID+" have been clicked.')</script>");
-            Response.Redirect("apartelPage2.aspx");
+            //Response.Write("<script language=javascript>alert('Room ID " + roomID + " have been clicked.')</script>");
+            Response.Redirect("roomBookingPage3.aspx");
         }
     }
 }

@@ -29,8 +29,8 @@ C:\Users\dmin\Desktop\HubCo_living\HubCo_living\bin\roslyn\VBCSCompiler.exe
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CoreCompileInputs.cache
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CopyComplete
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.dll
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.pdb
+C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache

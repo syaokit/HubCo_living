@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="apartelPage1.aspx.cs" Inherits="HubCo_living.apartelPage1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="roomBookingPage2.aspx.cs" Inherits="HubCo_living.roomBookingPage2" %>
 
 <!DOCTYPE html>
 
@@ -7,6 +7,7 @@
     <title></title>
     <style>
         table tr td{
+            width:200px;
             border:2px black solid;
         }
 
@@ -19,11 +20,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1>Room Apartel Page 1</h1>
+            <h1>Room Booking Page 2</h1>
 
             <asp:Repeater ID="rpt1" runat="server">
                 <ItemTemplate>
-                    <div style="border:1px solid #ff0000 ; display:inline-block ; width:70%">
+                    
                         <table>
                             <tr>
                                 <td colspan="2">
@@ -56,7 +57,7 @@
                             </tr>
                         </table>
 
-                    </div>
+                   
                     <br />
                 </ItemTemplate>
                 

@@ -11,7 +11,7 @@ namespace HubCo_living
 {
 
 
-    public partial class apartelPage1
+    public partial class roomBookingPage2
     {
 
         /// <summary>

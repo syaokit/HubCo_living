@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addProperty.aspx" />
-    <Content Include="apartelPage1.aspx" />
-    <Content Include="apartelPage2.aspx" />
+    <Content Include="roomBookingPage2.aspx" />
+    <Content Include="roomBookingPage3.aspx" />
     <Content Include="App_Data\db.mdf" />
     <Content Include="App_Data\db_log.ldf">
       <DependentUpon>db.mdf</DependentUpon>
@@ -81,7 +81,8 @@
     <Content Include="custProfile.aspx" />
     <Content Include="custRegister.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="roomTypeSelect.aspx" />
+    <Content Include="roomBookingPage1.aspx" />
+    <Content Include="roomBookingPage4.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -92,19 +93,19 @@
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
     </Compile>
-    <Compile Include="apartelPage1.aspx.cs">
-      <DependentUpon>apartelPage1.aspx</DependentUpon>
+    <Compile Include="roomBookingPage2.aspx.cs">
+      <DependentUpon>roomBookingPage2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="apartelPage1.aspx.designer.cs">
-      <DependentUpon>apartelPage1.aspx</DependentUpon>
+    <Compile Include="roomBookingPage2.aspx.designer.cs">
+      <DependentUpon>roomBookingPage2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="apartelPage2.aspx.cs">
-      <DependentUpon>apartelPage2.aspx</DependentUpon>
+    <Compile Include="roomBookingPage3.aspx.cs">
+      <DependentUpon>roomBookingPage3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="apartelPage2.aspx.designer.cs">
-      <DependentUpon>apartelPage2.aspx</DependentUpon>
+    <Compile Include="roomBookingPage3.aspx.designer.cs">
+      <DependentUpon>roomBookingPage3.aspx</DependentUpon>
     </Compile>
     <Compile Include="colivingPage1.aspx.cs">
       <DependentUpon>colivingPage1.aspx</DependentUpon>
@@ -152,12 +153,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="roomTypeSelect.aspx.cs">
-      <DependentUpon>roomTypeSelect.aspx</DependentUpon>
+    <Compile Include="roomBookingPage1.aspx.cs">
+      <DependentUpon>roomBookingPage1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="roomTypeSelect.aspx.designer.cs">
-      <DependentUpon>roomTypeSelect.aspx</DependentUpon>
+    <Compile Include="roomBookingPage1.aspx.designer.cs">
+      <DependentUpon>roomBookingPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="roomBookingPage4.aspx.cs">
+      <DependentUpon>roomBookingPage4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roomBookingPage4.aspx.designer.cs">
+      <DependentUpon>roomBookingPage4.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

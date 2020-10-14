@@ -83,7 +83,7 @@ namespace HubCo_living
                                             {
                                                 // Uplaod property data
                                                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
-                                                SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomType, @address, @unitNumber, @status, @postcode, @city, @state) ", con);
+                                                SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomType, @address, @unitNumber, @status, @postcode, @city, @state,@price) ", con);
                                                 con.Open();
                                                 cmd.Parameters.AddWithValue("@roomType", unitType);
                                                 cmd.Parameters.AddWithValue("@address", address);
@@ -91,6 +91,7 @@ namespace HubCo_living
                                                 cmd.Parameters.AddWithValue("@postcode", postcode);
                                                 cmd.Parameters.AddWithValue("@city", city);
                                                 cmd.Parameters.AddWithValue("@state", state);
+                                                cmd.Parameters.AddWithValue("@price", 0);
                                                 if (RadioButton1.Checked)
                                                     cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
                                                 else

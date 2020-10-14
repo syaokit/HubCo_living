@@ -11,7 +11,7 @@ namespace HubCo_living
 {
 
 
-    public partial class roomTypeSelect
+    public partial class roomBookingPage4
     {
 
         /// <summary>
@@ -24,21 +24,21 @@ namespace HubCo_living
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ApartelBtn control.
+        /// calendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ApartelBtn;
+        protected global::System.Web.UI.WebControls.Calendar calendar;
 
         /// <summary>
-        /// ColivingBtn control.
+        /// dateLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ColivingBtn;
+        protected global::System.Web.UI.WebControls.Label dateLbl;
     }
 }
