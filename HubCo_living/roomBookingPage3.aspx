@@ -46,6 +46,18 @@
                     Price          :<asp:Label ID="priceLbl" runat="server" Text=""></asp:Label>
                 </td>
 
+                <td>Room Name : 
+                    <asp:Label ID="roomNameLbl" runat="server" Text=""></asp:Label><br />
+                    Room Segment       :<asp:Label ID="roomSegmentLbl" runat="server" Text=""></asp:Label><br />
+                    Room Type      :
+                    <asp:Label ID="roomTypeLbl" runat="server" Text=""></asp:Label><br />
+                    Bathroom              :<asp:Label ID="bathroomLbl" runat="server" Text=""></asp:Label><br />
+                    Bed           :<asp:Label ID="bedLbl" runat="server" Text=""></asp:Label><br />
+                    Bathtub          :<asp:Label ID="bathtubLbl" runat="server" Text=""></asp:Label><br />
+                    TV          :<asp:Label ID="tvLbl" runat="server" Text=""></asp:Label><br />
+                    Balcony          :<asp:Label ID="balconyLbl" runat="server" Text=""></asp:Label>
+                </td>
+
                 <td>
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -56,10 +68,11 @@
                             Start date : 
                             <asp:Label ID="startDateLbl" runat="server" Text=""></asp:Label><br />
                             Duration         : 
-                            <asp:TextBox ID="durationTxt" runat="server" TextMode="Number" OnTextChanged="durationTxt_TextChanged" AutoPostBack="true" Width="100px"></asp:TextBox><br />
+                            <asp:TextBox ID="durationTxt" runat="server" TextMode="Number" OnTextChanged="durationTxt_TextChanged" AutoPostBack="true" Width="100px"></asp:TextBox>
+                            Days<br />
                             End Date        :  
                             <asp:Label ID="endDateLbl" runat="server" Text="" Enabled="false"></asp:Label><br />
-                             Result           :  
+                            Result           :  
                             <asp:Label ID="resultLbl" runat="server" Text="" Enabled="false"></asp:Label>
                         </ContentTemplate>
                     </asp:UpdatePanel>

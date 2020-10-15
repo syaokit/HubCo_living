@@ -29,9 +29,9 @@
                         Room Type
                     </td>
                     <td>
-                        <asp:DropDownList ID="roomTypeDdl" runat="server">
-                            <asp:ListItem Value="Apartel" Text="Apartel"></asp:ListItem>
-                            <asp:ListItem Value="Coliving" Text="Coliving"></asp:ListItem>
+                        <asp:DropDownList ID="roomSegmentDdl" runat="server">
+                            <asp:ListItem Value="Apartment co-living" Text="Apartment co-living"></asp:ListItem>
+                            <asp:ListItem Value="Hotel co-living" Text="Hotel co-living"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

@@ -19,8 +19,8 @@ namespace HubCo_living
             String str = locationTxt.Text.Substring(1);
             String fl = locationTxt.Text[0].ToString().ToUpper();
 
-            Application["locationInput"] = fl+str;
-            Application["roomType"] = roomTypeDdl.SelectedValue.ToString();
+            Application["location"] = fl+str;
+            Application["roomSegment"] = roomSegmentDdl.SelectedValue.ToString();
 
             //Response.Write("<script language=javascript>alert('Location"+ Application["locationInput"].ToString() + ".')</script>");
             Response.Redirect("roomBookingPage2.aspx");

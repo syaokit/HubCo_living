@@ -19,16 +19,24 @@ namespace HubCo_living
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            String unitType = ddlType.SelectedValue;
+            String roomName = roomNameTxt.Text;
+            String roomType = typeDDL.SelectedValue;
+            String roomSegment = segmentDDL.SelectedValue;
             String address = txtAddress.Text;
             String unitNo = txtNumber.Text;
             String postcode = txtPostcode.Text;
             String city = txtCity.Text;
-            String state = ddlState.SelectedValue;
+            String state = ddlState.SelectedValue;  
+            double price = double.Parse(priceTxt.Text);
+
+            String bed = bedDDL.SelectedValue;
+            int bathroomQty = int.Parse(bathroomQtyTxt.Text);
+            int bedQty = int.Parse(bedQtyTxt.Text);
+
             int roomID = 0;
 
             //Make sure all fields filled up
-            if (unitType.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Length == 0)
+            if (roomSegment.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Length == 0)
             {
                 Response.Write("<script language=javascript>alert('Please fill in all fields.')</script>");
             }
@@ -46,8 +54,7 @@ namespace HubCo_living
                     //Check if postal code is only numbers
                     if (IsDigit(postcode))
                     {
-                        try
-                        {
+                         
                             int postnumber = int.Parse(postcode);
 
                             //Check whether postal code within range
@@ -79,19 +86,47 @@ namespace HubCo_living
                                         }
                                         else
                                         {
-                                            try
-                                            {
+                                             
                                                 // Uplaod property data
                                                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
-                                                SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomType, @address, @unitNumber, @status, @postcode, @city, @state,@price) ", con);
+                                                SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomSegment, @roomType, @roomName, @address, @unitNumber, @status, @postcode, @city, @state,@price," +
+                                                    "@bathroom, @bathroomQty, @bed, @bedQty, @bathtub , @tv, @balcony) ", con);
                                                 con.Open();
-                                                cmd.Parameters.AddWithValue("@roomType", unitType);
+                                                cmd.Parameters.AddWithValue("@roomSegment", roomSegment);
+                                                cmd.Parameters.AddWithValue("@roomType", roomType);
+                                                cmd.Parameters.AddWithValue("@roomName", roomName);
                                                 cmd.Parameters.AddWithValue("@address", address);
                                                 cmd.Parameters.AddWithValue("@unitNumber", unitNo);
                                                 cmd.Parameters.AddWithValue("@postcode", postcode);
                                                 cmd.Parameters.AddWithValue("@city", city);
                                                 cmd.Parameters.AddWithValue("@state", state);
-                                                cmd.Parameters.AddWithValue("@price", 0);
+                                                cmd.Parameters.AddWithValue("@price", price);
+                                                cmd.Parameters.AddWithValue("@bathroomQty", bathroomQty);
+                                                cmd.Parameters.AddWithValue("@bedQty", bedQty);
+                                                cmd.Parameters.AddWithValue("@bed", bed);
+
+                                                if (bathroomRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB2.Text);
+
+
+                                                if (bathtubRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB2.Text);
+
+                                                if (tvRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB2.Text);
+
+                                                if (balconyRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB2.Text);
+
+
                                                 if (RadioButton1.Checked)
                                                     cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
                                                 else
@@ -154,11 +189,7 @@ namespace HubCo_living
                                                 }
 
 
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                Response.Write("<script language=javascript>alert('An error occured.')</script>");
-                                            }
+                                             
                                         }
                                     }
                                 }
@@ -168,11 +199,7 @@ namespace HubCo_living
                                 }
 
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            Response.Write("<script language=javascript>alert('Oops something went wrong.')</script>");
-                        }
+                        
 
                     }
                     else

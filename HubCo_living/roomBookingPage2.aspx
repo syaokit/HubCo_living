@@ -22,6 +22,8 @@
         <div>
             <h1>Room Booking Page 2</h1>
 
+            <h3>Location : </h3>
+            <asp:Label ID="locationLbl" runat="server" Text=""></asp:Label>
             <asp:Repeater ID="rpt1" runat="server">
                 <ItemTemplate>
                     

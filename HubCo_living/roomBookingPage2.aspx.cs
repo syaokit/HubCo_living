@@ -13,7 +13,7 @@ namespace HubCo_living
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            locationLbl.Text = Application["location"].ToString();
             if (!Page.IsPostBack)
             {
                 RepeaterData();
@@ -23,14 +23,14 @@ namespace HubCo_living
 
         private void RepeaterData()
         {
-            String location = Application["locationInput"].ToString();
-            String roomType = Application["roomType"].ToString();
+            String location = '%'+Application["location"].ToString()+'%';
+            String roomSegment = Application["roomSegment"].ToString();
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
-                SqlCommand cmd = new SqlCommand("select * from ( select a.*, b.imageContent, ROW_NUMBER() over(partition by a.roomID order by a.roomID) as rownum from Rooms a, PropertyImages b where a.roomID=b.roomID and a.roomType = @roomType and a.city = @city) as c where c.rownum=1 ;", con);
+                SqlCommand cmd = new SqlCommand("select * from ( select a.*, b.imageContent, ROW_NUMBER() over(partition by a.roomID order by a.roomID) as rownum from Rooms a, PropertyImages b where a.roomID=b.roomID and a.roomSegment = @roomSegment and a.city like @city and a.status = 'Available') as c where c.rownum=1 ;", con);
                 con.Open();
-                cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@roomSegment", roomSegment);
                 cmd.Parameters.AddWithValue("@city", location);
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

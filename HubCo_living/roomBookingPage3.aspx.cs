@@ -29,9 +29,9 @@ namespace HubCo_living
 
         private void RepeaterData()
         {
-            //String roomID = Application["roomID"].ToString();
+            String roomID = Application["roomID"].ToString();
 
-            String roomID = "10008";
+            
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
@@ -44,21 +44,27 @@ namespace HubCo_living
                 rpt1.DataSource = ds;
                 rpt1.DataBind();
 
-                string address = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
-                string unitNumber = Convert.ToString(ds.Tables[0].Rows[0]["unitNumber"]);
-                string postcode = Convert.ToString(ds.Tables[0].Rows[0]["postcode"]);
-                string city = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
-                string state = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
-                string status = Convert.ToString(ds.Tables[0].Rows[0]["status"]);
-                string price = Convert.ToString(ds.Tables[0].Rows[0]["price"]);
+                addressLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["address"]);
+                unitNumberLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["unitNumber"]);
+                postcodeLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["postcode"]);
+                cityLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
+                stateLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
+                statusLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["status"]);
+                priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"])) ;
 
-                unitNumberLbl.Text = unitNumber;
-                postcodeLbl.Text = postcode;
-                cityLbl.Text = city;
-                stateLbl.Text = state;
-                addressLbl.Text = address;
-                statusLbl.Text = status;
-                priceLbl.Text = "RM" + String.Format("{0:0.00}", price);
+
+                roomNameLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomName"]);
+                roomSegmentLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomSegment"]);
+                roomTypeLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomType"]);
+                bathroomLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathroom"])   + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bathroomQty"]);
+                bedLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bed"]) + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bedQty"]);
+                bathtubLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathtub"]);
+                tvLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["tv"]);
+                balconyLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["balcony"]);
+
+                 
+
+                
                 con.Close();
             }
             catch (Exception ex)
@@ -76,12 +82,8 @@ namespace HubCo_living
 
         protected void calendar_DayRender(object sender, DayRenderEventArgs e)
         {
-            //String roomId = Application["roomID"].ToString();
-            String roomId = "10006";
-
-            // List<DateTime> startDate = new List<DateTime>();
-            // List<DateTime> endDate = new List<DateTime>();
-
+            String roomId = Application["roomID"].ToString();
+              
 
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
             SqlCommand cmd = new SqlCommand("select * from roombookings where roomId = @roomId ", con);
@@ -131,9 +133,9 @@ namespace HubCo_living
 
         protected void durationTxt_TextChanged(object sender, EventArgs e)
         {
-            int duration = int.Parse(durationTxt.Text.ToString());
+            int duration = int.Parse(durationTxt.Text.ToString()) ;
             DateTime startDate = DateTime.Parse(startDateLbl.Text.ToString());
-            DateTime endDate = startDate.AddDays(duration);
+            DateTime endDate = startDate.AddDays(duration-1);
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 

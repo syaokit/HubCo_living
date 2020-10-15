@@ -33,13 +33,13 @@ namespace HubCo_living
         protected global::System.Web.UI.WebControls.TextBox locationTxt;
 
         /// <summary>
-        /// roomTypeDdl control.
+        /// roomSegmentDdl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList roomTypeDdl;
+        protected global::System.Web.UI.WebControls.DropDownList roomSegmentDdl;
 
         /// <summary>
         /// searchBtn control.

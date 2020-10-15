@@ -25,13 +25,27 @@ CREATE TABLE [dbo].[Admins] (
 );
 
 CREATE TABLE [dbo].[Rooms] (
-    [roomID]   INT          IDENTITY (10000, 1) NOT NULL,
-    [roomType]     VARCHAR (50) NOT NULL,
-    [address]      VARCHAR (max) NOT NULL,
-    [unitNumber]   VARCHAR (50) NOT NULL,
-    [status]       VARCHAR (50) NOT NULL, 
+    [roomID]     INT           IDENTITY (10000, 1) NOT NULL,
+    [roomSegment]   VARCHAR (50)  NULL,
+	[roomType]   VARCHAR (50)  NULL,
+	[roomName]   VARCHAR (max)  NULL,
+    [address]    VARCHAR (MAX) NOT NULL,
+    [unitNumber] VARCHAR (50)  NOT NULL,
+    [status]     VARCHAR (50)  NOT NULL,
+    [postcode]   INT           NOT NULL,
+    [city]       VARCHAR (50)  NOT NULL,
+    [state]      VARCHAR (50)  NOT NULL,
+    [price]      FLOAT (53)    DEFAULT ((0.0)) NOT NULL,
+    [bathroom]   VARCHAR (50)  NULL,
+	[bathroomQty]   int  NULL,
+	[bed]   VARCHAR (50)  NULL,
+	[bedQty]   int  NULL,
+	[bathtub]   VARCHAR (50)  NULL,
+	[tv]   VARCHAR (50)  NULL,
+	[balcony]   VARCHAR (50)  NULL,
     PRIMARY KEY CLUSTERED ([roomID] ASC)
 );
+
 
 CREATE TABLE [dbo].[RoomBookings] (
     [bookingID]    INT          IDENTITY (10000, 1) NOT NULL,
@@ -147,4 +161,12 @@ CREATE TABLE [dbo].[ServiceRecords] (
     PRIMARY KEY CLUSTERED ([serviceRecordID] ASC),
     FOREIGN KEY ([roomID]) REFERENCES [dbo].[Rooms] ([roomID]),
     FOREIGN KEY ([serviceReqID]) REFERENCES [dbo].[ServiceRequests] ([serviceReqID]),
+);
+
+CREATE TABLE [dbo].[PropertyImages] (
+    [imageID]      INT   IDENTITY (10000, 1) NOT NULL,
+    [imageContent] IMAGE NOT NULL,
+    [roomID]       INT   NOT NULL,
+    PRIMARY KEY CLUSTERED ([imageID] ASC),
+    FOREIGN KEY ([roomID]) REFERENCES [dbo].[Rooms] ([roomID])
 );
