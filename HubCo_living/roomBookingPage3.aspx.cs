@@ -14,6 +14,7 @@ namespace HubCo_living
     public partial class roomBookingPage3 : System.Web.UI.Page
     {
         List<DateTime> invalidDate = new List<DateTime>();
+         
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,6 +53,7 @@ namespace HubCo_living
                 statusLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["status"]);
                 priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"])) ;
 
+                Session["price"] = double.Parse(ds.Tables[0].Rows[0]["price"].ToString());
 
                 roomNameLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomName"]);
                 roomSegmentLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomSegment"]);
@@ -129,13 +131,15 @@ namespace HubCo_living
 
             DateTime date = calendar.SelectedDate;
             startDateLbl.Text = date.ToShortDateString();
+
+            durationTxt_TextChanged(sender, e);
         }
 
         protected void durationTxt_TextChanged(object sender, EventArgs e)
         {
             int duration = int.Parse(durationTxt.Text.ToString()) ;
             DateTime startDate = DateTime.Parse(startDateLbl.Text.ToString());
-            DateTime endDate = startDate.AddDays(duration-1);
+            DateTime endDate = startDate.AddDays(duration);
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 
@@ -153,13 +157,19 @@ namespace HubCo_living
                     else
                     {
                         resultLbl.Text = "valid date";
+
+                        double total = (Double)Session["price"] * (Double)duration;
+                        totalLbl.Text = "RM" + String.Format("{0:0.00}",  total);
                     }
                         
                 }
                 num++;
             }
 
+
+            
             endDateLbl.Text = endDate.ToShortDateString();
+           
         }
     }
 }
