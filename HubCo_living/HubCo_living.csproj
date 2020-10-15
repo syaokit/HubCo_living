@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addProperty.aspx" />
+    <Content Include="hi.aspx" />
     <Content Include="roomBookingPage2.aspx" />
     <Content Include="roomBookingPage3.aspx" />
     <Content Include="App_Data\db.mdf" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hi.aspx.cs">
+      <DependentUpon>hi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hi.aspx.designer.cs">
+      <DependentUpon>hi.aspx</DependentUpon>
     </Compile>
     <Compile Include="roomBookingPage2.aspx.cs">
       <DependentUpon>roomBookingPage2.aspx</DependentUpon>
