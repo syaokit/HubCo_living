@@ -156,6 +156,8 @@ namespace HubCo_living
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 
+            Application["startDate"] = startDate;
+            Application["endDate"] = endDate;
 
             calDate.Clear();
             bool valid = true;

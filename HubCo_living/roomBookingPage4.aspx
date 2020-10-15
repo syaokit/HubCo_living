@@ -10,11 +10,58 @@
     <form id="form1" runat="server">
         <h1>Room Bookoing Page 4</h1>
         <div>                             
-           
              
-            <asp:Calendar ID="calendar" runat="server"  OnDayRender="calendar_DayRender" OnSelectionChanged="calendar_SelectionChanged" SelectionMode="Day"></asp:Calendar>
-            <asp:Label ID="dateLbl" runat="server" Text=""></asp:Label>
-                  
+            <table>
+                <tr>
+                    <td>
+                        Card Name:
+                    </td>
+                     <td>
+                         <asp:TextBox ID="cardNameTxt" runat="server"></asp:TextBox> 
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td>
+                        Card Number:
+                    </td>
+                     <td>
+                         <asp:TextBox ID="cardNumTxt1" runat="server" ></asp:TextBox> - 
+                         <asp:TextBox ID="cardNumTxt2" runat="server" ></asp:TextBox>  -
+                         <asp:TextBox ID="cardNumTxt3" runat="server" ></asp:TextBox> -
+                         <asp:TextBox ID="cardNumTxt4" runat="server"></asp:TextBox> 
+
+                         <asp:CustomValidator runat="server" id="cusCustom"     onservervalidate="cusCustom_ServerValidate" errormessage="Error Card Number" />
+                    </td>
+                </tr>
+
+                        <tr>
+                    <td>
+                        Expired Date:
+                    </td>
+                     <td>
+                         <asp:DropDownList ID="expDDL1" runat="server"></asp:DropDownList>
+                         /
+                         <asp:DropDownList ID="expDDL2" runat="server"></asp:DropDownList>
+                       
+                    </td>
+                </tr>
+
+                    <tr>
+                    <td>
+                        CCV:
+                    </td>
+                     <td>
+                         <asp:TextBox ID="ccvTxt" runat="server"></asp:TextBox> 
+                    </td>
+                </tr>
+
+            </table>
+
+
+
+            <asp:Button ID="confirmBtn" runat="server" Text="Confirm" OnClick="confirmBtn_Click"   />
+            
         </div>
     </form>
 </body>

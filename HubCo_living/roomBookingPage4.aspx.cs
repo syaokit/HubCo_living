@@ -1,58 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
     public partial class roomBookingPage4 : System.Web.UI.Page
     {
-        List<DateTime> list = new List<DateTime>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            expDDL1.Items.Clear();
+            expDDL2.Items.Clear();
 
+            for (int i = 1; i < 32; i++)
+                expDDL1.Items.Add(i.ToString());
+
+            for (int i = 1; i < 13; i++)
+                expDDL2.Items.Add(i.ToString());
         }
 
 
 
-        protected void calendar_DayRender(object sender, DayRenderEventArgs e)
+
+        protected void confirmBtn_Click(object sender, EventArgs e)
         {
-            if (e.Day.IsSelected == true)
-            {
-                list.Add(e.Day.Date);
-            }
 
 
-            Session["SelectedDates"] = list;
 
-            foreach (DateTime dt in list)
-            {
-                dateLbl.Text = dt.ToShortDateString() + "<br/>";
-            }
+            //String customeriD = Application["customerID"].ToString();
+            /*String customerID = "10001";
+            String roomID = Application["roomID"].ToString();
+            DateTime startDate = DateTime.Parse(Application["startDate"].ToString());
+            DateTime endDate = DateTime.Parse(Application["endDate"].ToString());
+            DateTime bookingDate = DateTime.Today.Date;
 
+
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
+            SqlCommand cmd = new SqlCommand("insert into [RoomBooking] values (@customerID,@roomID,  @startDate, @endDate, @bookingDate)", con);
+            con.Open();
+            cmd.Parameters.AddWithValue("@customerID", customerID);
+            cmd.Parameters.AddWithValue("@roomID", roomID);
+            cmd.Parameters.AddWithValue("@startDate", startDate);
+            cmd.Parameters.AddWithValue("@endDate", endDate);
+            cmd.Parameters.AddWithValue("@bookingDate", bookingDate);
+             
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            Response.Write("<script language=javascript>alert('Room Booking Successfull.')</script>");
+            */
         }
 
-
-        protected void calendar_SelectionChanged(object sender, EventArgs e)
+        protected void cusCustom_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            DateTime select = calendar.SelectedDate;
 
-            if (Session["SelectedDates"] != null)
+            int num;
+            bool isInt1 = int.TryParse(cardNumTxt1.Text.ToString(), out num);
+            bool isInt2 = int.TryParse(cardNumTxt2.Text.ToString(), out num);
+            bool isInt3 = int.TryParse(cardNumTxt3.Text.ToString(), out num);
+            bool isInt4 = int.TryParse(cardNumTxt4.Text.ToString(), out num);
+
+
+            if (cardNumTxt1.Text.ToString().Length == 4 && cardNumTxt2.Text.ToString().Length == 4 && cardNumTxt3.Text.ToString().Length == 4 && cardNumTxt4.Text.ToString().Length == 4)
             {
-                List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-                foreach (DateTime dt in newList)
-                {
-                    if (select.CompareTo(dt) == 0)
-                    {
-                        calendar.SelectedDates.Remove(select);
-                    }
-                    else
-                    {
-                        calendar.SelectedDates.Add(dt);
-                    }
-
-                }
-                list.Clear();
+                if(isInt1 == true && isInt2 == true && isInt3 == true && isInt4 == true)
+                   args.IsValid = true;
+                else
+                    args.IsValid = false;
             }
+               
+            else
+                args.IsValid = false;
         }
     }
 }
