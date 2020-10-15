@@ -20,6 +20,32 @@
      
 
     </style>
+
+        <script>
+            function onlyDotsAndNumbers(txt, event) {
+                var charCode = (event.which) ? event.which : event.keyCode
+                if (charCode == 46) {
+                    if (txt.value.indexOf(".") < 0)
+                        return true;
+                    else
+                        return false;
+                }
+
+                if (txt.value.indexOf(".") > 0) {
+                    var txtlen = txt.value.length;
+                    var dotpos = txt.value.indexOf(".");
+
+                    //Allow 2 decimal points
+                    if ((txtlen - dotpos) > 2)
+                        return false;
+                }
+
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+
+                return true;
+            }
+        </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -116,9 +142,9 @@
                 </tr>
 
                 <tr>
-                    <td><label>Price : </label></td>
+                    <td><label>Price (RM) : </label></td>
                     <td>
-                         <asp:TextBox ID="priceTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
+                         <asp:TextBox ID="priceTxt" runat="server" onkeypress="return onlyDotsAndNumbers(this,event);" ></asp:TextBox><br />
                     </td>
                 </tr>
 

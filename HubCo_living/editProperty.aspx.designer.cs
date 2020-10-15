@@ -168,13 +168,13 @@ namespace HubCo_living
         protected global::System.Web.UI.WebControls.RadioButton bathroomRB2;
 
         /// <summary>
-        /// bathroomQtyTxt control.
+        /// ddlBath control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox bathroomQtyTxt;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBath;
 
         /// <summary>
         /// bedDDL control.
@@ -186,13 +186,13 @@ namespace HubCo_living
         protected global::System.Web.UI.WebControls.DropDownList bedDDL;
 
         /// <summary>
-        /// bedQtyTxt control.
+        /// ddlBed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox bedQtyTxt;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBed;
 
         /// <summary>
         /// bathtubRB1 control.

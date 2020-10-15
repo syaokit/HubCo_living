@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addProperty.aspx" />
+    <Content Include="AllPropertyAdmin.aspx" />
+    <Content Include="EditProperty.aspx" />
     <Content Include="hi.aspx" />
     <Content Include="roomBookingPage2.aspx" />
     <Content Include="roomBookingPage3.aspx" />
@@ -93,6 +95,20 @@
     </Compile>
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllPropertyAdmin.aspx.cs">
+      <DependentUpon>AllPropertyAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllPropertyAdmin.aspx.designer.cs">
+      <DependentUpon>AllPropertyAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProperty.aspx.cs">
+      <DependentUpon>EditProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProperty.aspx.designer.cs">
+      <DependentUpon>EditProperty.aspx</DependentUpon>
     </Compile>
     <Compile Include="hi.aspx.cs">
       <DependentUpon>hi.aspx</DependentUpon>

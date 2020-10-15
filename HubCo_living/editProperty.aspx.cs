@@ -28,7 +28,7 @@ namespace HubCo_living
                 catch (Exception ex)
                 {
                     Response.Write("<script language=javascript>alert('Please select a property!')</script>");
-                    Response.Redirect("AllRoomAdmin.aspx");
+                    Response.Redirect("AllPropertyAdmin.aspx");
                 }
 
 
@@ -49,15 +49,41 @@ namespace HubCo_living
                         txtNumber.Text = reader["unitNumber"].ToString();
                         ddlState.SelectedValue = reader["state"].ToString();
                         ddlType.SelectedValue = reader["roomType"].ToString();
+                        priceTxt.Text = reader["price"].ToString();
+                        bedDDL.SelectedValue = reader["bed"].ToString();
+                        ddlBed.SelectedValue = reader["bedQty"].ToString();
+                        ddlBath.SelectedValue = reader["bathroomQty"].ToString();
 
                         if (reader["status"].ToString() == "Available")
-                        {
                             RadioButton1.Checked = true;
-                        }
                         else
-                        {
                             RadioButton2.Checked = true;
-                        }
+
+                        if (reader["bathroom"].ToString() == "Private")
+                            bathroomRB1.Checked = true;
+                        else
+                            bathroomRB2.Checked = true;
+
+
+                        if (reader["bathtub"].ToString() == "Yes")
+                            bathtubRB1.Checked = true;
+                        else
+                            bathtubRB2.Checked = true;
+
+
+                        if (reader["tv"].ToString() == "Yes")
+                            tvRB1.Checked = true;
+                        else
+                            tvRB2.Checked = true;
+
+
+                        if (reader["balcony"].ToString() == "Yes")
+                            balconyRB1.Checked = true;
+                        else
+                            balconyRB2.Checked = true;
+
+
+
                         con.Close();
                     }
 
@@ -68,7 +94,7 @@ namespace HubCo_living
                 {
                     con.Close();
                     Response.Write("<script language=javascript>alert('Property does not exist!')</script>");
-                    Response.Redirect("AllRoomAdmin.aspx");
+                    Response.Redirect("AllPropertyAdmin.aspx");
                 }
             }
         }
@@ -81,103 +107,133 @@ namespace HubCo_living
             String postcode = txtPostcode.Text;
             String city = txtCity.Text;
             String state = ddlState.SelectedValue;
+            String bed = bedDDL.SelectedValue;
+            int bathroomQty = int.Parse(ddlBath.SelectedValue);
+            int bedQty = int.Parse(ddlBed.Text);
+            double price = double.Parse(priceTxt.Text);
 
-            try
-            {
-                //Make sure all fields filled up
-                if (unitType.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Equals("0"))
+                try
                 {
-                    Response.Write("<script language=javascript>alert('Please fill in all fields.')</script>");
-                }
-                else
-                {
-                    // Verify post code length and type
-                    if (postcode.Length < 5)
+                    //Make sure all fields filled up
+                    if (unitType.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Equals("0"))
                     {
-                        Response.Write("<script language=javascript>alert('Invalid postal code.')</script>");
+                        Response.Write("<script language=javascript>alert('Please fill in all fields.')</script>");
                     }
                     else
                     {
-                        //Check if postal code is only numbers
-                        if (IsDigit(postcode))
+                        // Verify post code length and type
+                        if (postcode.Length < 5)
                         {
-                            try
-                            {
-                                int postnumber = int.Parse(postcode);
-
-                                //Check whether postal code within range
-                                if (postnumber < 1000 || postnumber > 87033)
-                                {
-                                    Response.Write("<script language=javascript>alert('This post code does not exist.')</script>");
-                                }
-                                else
-                                {
-                                    //Check whether city is in alphabets only
-                                    if (IsLetter(city))
-                                    {
-                                        try
-                                        {
-                                            // Update property data
-                                            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\App_Data\db.mdf;Integrated Security=True");
-                                            SqlCommand cmd = new SqlCommand("update Rooms set roomType=@roomType, address= @address, unitNumber=@unitNumber, status=@status, postcode=@postcode, city=@city, state=@state where roomID=@roomID", con);
-                                            con.Open();
-                                            cmd.Parameters.AddWithValue("@roomType", unitType);
-                                            cmd.Parameters.AddWithValue("@address", address);
-                                            cmd.Parameters.AddWithValue("@unitNumber", unitNo);
-                                            cmd.Parameters.AddWithValue("@postcode", postcode);
-                                            cmd.Parameters.AddWithValue("@city", city);
-                                            cmd.Parameters.AddWithValue("@state", state);
-                                            cmd.Parameters.AddWithValue("@roomID", lblRoomId.Text);
-
-                                            if (RadioButton1.Checked)
-                                                cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@status", RadioButton2.Text);
-                                            cmd.ExecuteNonQuery();
-                                            con.Close();
-
-                                            Response.Write("<script language=javascript>alert('Room Updated!')</script>");
-                                            //Response.Redirect("AllRoomAdmin.aspx");
-
-
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Response.Write("<script language=javascript>alert('An error occured.')</script>");
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        Response.Write("<script language=javascript>alert('Input for city have to be in alphabets only.')</script>");
-                                    }
-
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Response.Write("<script language=javascript>alert('Oops something went wrong.')</script>");
-                            }
-
+                            Response.Write("<script language=javascript>alert('Invalid postal code.')</script>");
                         }
                         else
                         {
-                            Response.Write("<script language=javascript>alert('Post code can only contain numbers.')</script>");
+                            //Check if postal code is only numbers
+                            if (IsDigit(postcode))
+                            {
+                                try
+                                {
+                                    int postnumber = int.Parse(postcode);
+
+                                    //Check whether postal code within range
+                                    if (postnumber < 1000 || postnumber > 87033)
+                                    {
+                                        Response.Write("<script language=javascript>alert('This post code does not exist.')</script>");
+                                    }
+                                    else
+                                    {
+                                        //Check whether city is in alphabets only
+                                        if (IsLetter(city))
+                                        {
+                                            try
+                                            {
+                                                // Update property data
+                                                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\App_Data\db.mdf;Integrated Security=True");
+                                                SqlCommand cmd = new SqlCommand("update Rooms set roomType=@roomType, address=@address, unitNumber=@unitNumber, status=@status, postcode=@postcode, city=@city, state=@state, price=@price," +
+                                                                                 "bathroom=@bathroom, bathroomQty=@bathroomQty, bed=@bed, bedQty=@bedQty, bathtub=@bathtub , tv=@tv, balcony=@balcony where roomID=@roomID", con);
+                                                con.Open();
+                                                cmd.Parameters.AddWithValue("@roomType", unitType);
+                                                cmd.Parameters.AddWithValue("@address", address);
+                                                cmd.Parameters.AddWithValue("@unitNumber", unitNo);
+                                                cmd.Parameters.AddWithValue("@postcode", postcode);
+                                                cmd.Parameters.AddWithValue("@city", city);
+                                                cmd.Parameters.AddWithValue("@state", state);
+                                                cmd.Parameters.AddWithValue("@price", price);
+                                                cmd.Parameters.AddWithValue("@bed", bed);
+                                                cmd.Parameters.AddWithValue("@bathroomQty", bathroomQty);
+                                                cmd.Parameters.AddWithValue("@bedQty", bedQty);
+
+                                                if (RadioButton1.Checked)
+                                                    cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@status", RadioButton2.Text);
+
+                                                if (bathroomRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB2.Text);
+
+                                                if (bathtubRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB2.Text);
+
+                                                if (tvRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB2.Text);
+
+                                                if (balconyRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB2.Text);
+
+                                                cmd.Parameters.AddWithValue("@roomID", lblRoomId.Text);
+
+                                                cmd.ExecuteNonQuery();
+                                                con.Close();
+
+                                                Response.Write("<script language=javascript>alert('Room Updated!')</script>");
+                                                //Response.Redirect("AllPropertyAdmin.aspx");
+
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Response.Write("<script language=javascript>alert('An error occured.')</script>");
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            Response.Write("<script language=javascript>alert('Input for city have to be in alphabets only.')</script>");
+                                        }
+
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Response.Write("<script language=javascript>alert('Oops something went wrong.')</script>");
+                                }
+
+                            }
+                            else
+                            {
+                                Response.Write("<script language=javascript>alert('Post code can only contain numbers.')</script>");
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Response.Write("<script language=javascript>alert('An error occured!')</script>");
 
+                }
 
+           
 
-
-
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script language=javascript>alert('An error occured!')</script>");
-
-            }
-
+           
+           
         }
 
         protected string GetImage(object img)
@@ -304,7 +360,7 @@ namespace HubCo_living
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AllRoomAdmin.aspx");
+            Response.Redirect("AllPropertyAdmin.aspx");
         }
 
         private bool IsDigit(string str)

@@ -69,3 +69,4 @@ C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubC
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CopyComplete
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.dll
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.pdb
+C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
