@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addProperty.aspx" />
+    <Content Include="adminLogin.aspx" />
+    <Content Include="AllRoomAdmin.aspx" />
+    <Content Include="editProperty.aspx" />
     <Content Include="roomBookingPage2.aspx" />
     <Content Include="roomBookingPage3.aspx" />
     <Content Include="App_Data\db.mdf" />
@@ -92,6 +95,27 @@
     </Compile>
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminLogin.aspx.cs">
+      <DependentUpon>adminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminLogin.aspx.designer.cs">
+      <DependentUpon>adminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllRoomAdmin.aspx.cs">
+      <DependentUpon>AllRoomAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllRoomAdmin.aspx.designer.cs">
+      <DependentUpon>AllRoomAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editProperty.aspx.cs">
+      <DependentUpon>editProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editProperty.aspx.designer.cs">
+      <DependentUpon>editProperty.aspx</DependentUpon>
     </Compile>
     <Compile Include="roomBookingPage2.aspx.cs">
       <DependentUpon>roomBookingPage2.aspx</DependentUpon>
