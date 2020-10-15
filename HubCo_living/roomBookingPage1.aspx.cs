@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
@@ -13,13 +8,13 @@ namespace HubCo_living
         {
 
         }
-         
+
         protected void searchBtn_Click(object sender, EventArgs e)
         {
             String str = locationTxt.Text.Substring(1);
             String fl = locationTxt.Text[0].ToString().ToUpper();
 
-            Application["location"] = fl+str;
+            Application["location"] = fl + str;
             Application["roomSegment"] = roomSegmentDdl.SelectedValue.ToString();
 
             //Response.Write("<script language=javascript>alert('Location"+ Application["locationInput"].ToString() + ".')</script>");

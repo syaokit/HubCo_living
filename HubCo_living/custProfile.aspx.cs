@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
@@ -33,7 +28,7 @@ namespace HubCo_living
                     dobLbl.Text = dob.ToShortDateString();
 
                     String pass = "";
-                    for(int i=0; i< reader["password"].ToString().Length; i++)
+                    for (int i = 0; i < reader["password"].ToString().Length; i++)
                     {
                         pass += '*';
                     }

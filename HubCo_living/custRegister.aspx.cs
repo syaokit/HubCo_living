@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
@@ -12,10 +7,10 @@ namespace HubCo_living
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        
+
         protected void clearBtn_Click(object sender, EventArgs e)
         {
             emailTxt.Text = "";
@@ -25,14 +20,14 @@ namespace HubCo_living
             passwordTxt.Text = "";
             rePasswordTxt.Text = "";
             dobTxt.Text = "";
-           gender1.Checked = false;
+            gender1.Checked = false;
             gender2.Checked = false;
 
         }
 
         protected void registerBtn_Click(object sender, EventArgs e)
         {
-            
+
             string pass1 = passwordTxt.Text;
             string pass2 = rePasswordTxt.Text;
             string email = emailTxt.Text;
@@ -40,7 +35,7 @@ namespace HubCo_living
             string contactNo = contactNoTxt.Text;
             string icNumber = icNumberTxt.Text;
             string gender = "";
-            DateTime dob = DateTime.Parse( dobTxt.Text.ToString());
+            DateTime dob = DateTime.Parse(dobTxt.Text.ToString());
 
 
             if (gender1.Checked == true)
@@ -147,12 +142,12 @@ namespace HubCo_living
                 else
                 {
                     msg += "Password length must more than 8 <br/>";
-                } 
+                }
             }
             else
             {
                 msg += "Password and Confirm Password are different <br/>";
-            } 
+            }
             return msg;
         }
 
@@ -183,9 +178,9 @@ namespace HubCo_living
 
             if (contactNo.Length != 10)
             {
-                validContactNo = false; 
+                validContactNo = false;
             }
-            for(int i=0; i < contactNo.Length; i++)
+            for (int i = 0; i < contactNo.Length; i++)
             {
                 char number = contactNo[i];
                 if (!(Char.IsDigit(number)))
@@ -194,7 +189,7 @@ namespace HubCo_living
                 }
             }
 
-            if(validContactNo==false)
+            if (validContactNo == false)
                 errMsg += "Contact Number should be 10 digits number..<br/>";
 
             //check ic Number
@@ -218,7 +213,7 @@ namespace HubCo_living
 
             //check dob 
             DateTime now = DateTime.Now;
-            if(now.CompareTo(dob) == -1)
+            if (now.CompareTo(dob) == -1)
             {
                 errMsg += "D.O.B should be earlier than today date..<br/>";
             }
@@ -226,6 +221,6 @@ namespace HubCo_living
             return errMsg;
         }
 
-       
+
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
@@ -17,7 +12,7 @@ namespace HubCo_living
 
         protected void confirmBtn_Click(object sender, EventArgs e)
         {
-           // String customerID = Application["customerID"].ToString();
+            // String customerID = Application["customerID"].ToString();
             String customerID = "10000";
 
             String oldPass = oldPasswordTxt.Text;
