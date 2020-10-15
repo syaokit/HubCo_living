@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,7 +20,7 @@ namespace HubCo_living
 
         private void RepeaterData()
         {
-            String location = '%'+Application["location"].ToString()+'%';
+            String location = '%' + Application["location"].ToString() + '%';
             String roomSegment = Application["roomSegment"].ToString();
             try
             {
@@ -35,7 +32,7 @@ namespace HubCo_living
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                
+
                 da.Fill(ds);
                 rpt1.DataSource = ds;
                 rpt1.DataBind();

@@ -14,7 +14,6 @@ namespace HubCo_living
             {
                 RepeaterData();
             }
-
         }
 
         private void RepeaterData()

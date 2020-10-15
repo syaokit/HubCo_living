@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace HubCo_living
@@ -32,16 +26,16 @@ namespace HubCo_living
 
             foreach (DateTime dt in list)
             {
-                dateLbl.Text = dt.ToShortDateString()+"<br/>";
+                dateLbl.Text = dt.ToShortDateString() + "<br/>";
             }
-                
+
         }
 
 
         protected void calendar_SelectionChanged(object sender, EventArgs e)
         {
             DateTime select = calendar.SelectedDate;
-             
+
             if (Session["SelectedDates"] != null)
             {
                 List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
@@ -55,7 +49,7 @@ namespace HubCo_living
                     {
                         calendar.SelectedDates.Add(dt);
                     }
-                    
+
                 }
                 list.Clear();
             }

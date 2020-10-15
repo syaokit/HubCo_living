@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
@@ -16,7 +10,7 @@ namespace HubCo_living
             if (!IsPostBack)
             {
 
-                loadData(); 
+                loadData();
             }
         }
 
@@ -58,7 +52,7 @@ namespace HubCo_living
 
         protected void confirmBtn_Click(object sender, EventArgs e)
         {
-           
+
             //String customerID = Application["customerID"].ToString();
             String customerID = "10000";
 
@@ -78,7 +72,7 @@ namespace HubCo_living
             }
             else
             {
-                dob= DateTime.Parse(dobTxt.Text.ToString()); 
+                dob = DateTime.Parse(dobTxt.Text.ToString());
             }
 
 
@@ -92,9 +86,9 @@ namespace HubCo_living
             }
 
             String validInfo = validateInfo(contactNo, icNumber, dob);
-            
 
-            if  (validInfo.Equals(""))
+
+            if (validInfo.Equals(""))
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
                 SqlCommand cmd = new SqlCommand("update [Customers] set email = @email , fullName = @fullName , contactNo = @contactNo " +
@@ -116,10 +110,10 @@ namespace HubCo_living
             }
             else
             {
-             
+
                 errMsg += validInfo;
 
-                
+
 
                 errList.Text = errMsg;
                 errList.Style["color"] = "red";
@@ -183,7 +177,7 @@ namespace HubCo_living
 
         protected void clearBtn_Click(object sender, EventArgs e)
         {
-             
+
             fullNameTxt.Text = "";
             contactNoTxt.Text = "";
             icNumberTxt.Text = "";
