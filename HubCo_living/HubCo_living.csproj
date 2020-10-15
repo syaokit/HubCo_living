@@ -67,9 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="abc.aspx" />
     <Content Include="addProperty.aspx" />
-    <Content Include="hi.aspx" />
     <Content Include="roomBookingPage2.aspx" />
     <Content Include="roomBookingPage3.aspx" />
     <Content Include="App_Data\db.mdf" />
@@ -86,29 +84,14 @@
     <Content Include="roomBookingPage1.aspx" />
     <Content Include="roomBookingPage4.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="abc.aspx.cs">
-      <DependentUpon>abc.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="abc.aspx.designer.cs">
-      <DependentUpon>abc.aspx</DependentUpon>
-    </Compile>
     <Compile Include="addProperty.aspx.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="hi.aspx.cs">
-      <DependentUpon>hi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="hi.aspx.designer.cs">
-      <DependentUpon>hi.aspx</DependentUpon>
     </Compile>
     <Compile Include="roomBookingPage2.aspx.cs">
       <DependentUpon>roomBookingPage2.aspx</DependentUpon>
@@ -183,13 +166,6 @@
     </Compile>
     <Compile Include="roomBookingPage4.aspx.designer.cs">
       <DependentUpon>roomBookingPage4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

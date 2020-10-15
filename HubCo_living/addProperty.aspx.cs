@@ -207,12 +207,12 @@ namespace HubCo_living
                                             {
                                                 Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
                                             }
-                                            else
-                                            {
-
-                                            }
+                                       
                                         }
+                                        else
+                                        {
 
+                                        }
 
                                     }
                                 }

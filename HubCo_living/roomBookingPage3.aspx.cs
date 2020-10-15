@@ -14,11 +14,11 @@ namespace HubCo_living
     public partial class roomBookingPage3 : System.Web.UI.Page
     {
         List<DateTime> invalidDate = new List<DateTime>();
+        List<DateTime> calDate = new List<DateTime>();
          
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+             
             RepeaterData();
          }
 
@@ -85,7 +85,7 @@ namespace HubCo_living
         protected void calendar_DayRender(object sender, DayRenderEventArgs e)
         {
             String roomId = Application["roomID"].ToString();
-              
+           
 
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
             SqlCommand cmd = new SqlCommand("select * from roombookings where roomId = @roomId ", con);
@@ -124,6 +124,19 @@ namespace HubCo_living
             {
                 e.Day.IsSelectable = false;
             }
+
+
+            List<DateTime> newList = (List<DateTime>)Session["calDate"];
+
+            if(newList != null)
+            {
+             foreach(DateTime dt in newList)
+                        {
+                            if (e.Day.Date == dt)
+                                e.Cell.BackColor = Color.LightGreen;
+                        }
+            }
+           
         }
 
         protected void calendar_SelectionChanged(object sender, EventArgs e)
@@ -143,6 +156,9 @@ namespace HubCo_living
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 
+
+            calDate.Clear();
+            bool valid = true;
             int num = 1;
             for(int i=0; i<duration;i++)
             {
@@ -152,21 +168,30 @@ namespace HubCo_living
                     if (d == dt)
                     {
                         resultLbl.Text = "Invalid date";
+                        proceedBtn.Enabled = false;
+                        valid = false;
                         break;
+                         
                     }
                     else
                     {
+                        proceedBtn.Enabled = true;
                         resultLbl.Text = "valid date";
 
                         double total = (Double)Session["price"] * (Double)duration;
-                        totalLbl.Text = "RM" + String.Format("{0:0.00}",  total);
+                        totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+
+                        calDate.Add(d);
                     }
                         
                 }
                 num++;
+
+                if (valid == false)
+                    break;
             }
 
-
+            Session["calDate"] = calDate;
             
             endDateLbl.Text = endDate.ToShortDateString();
            
