@@ -69,8 +69,6 @@ namespace HubCo_living
                             if (IsLetter(city))
                             {
 
-                                String fullAddress = address + ", " + postcode + ' ' + city + ' ' + state + ", Malaysia";
-
                                 //Verify at least 4 pictures uploaded
                                 if (verifyFileNumber() == false)
                                 {
@@ -134,8 +132,6 @@ namespace HubCo_living
                                                 cmd.Parameters.AddWithValue("@status", RadioButton2.Text);
                                             cmd.ExecuteNonQuery();
                                             con.Close();
-
-
 
 
 

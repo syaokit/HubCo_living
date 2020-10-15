@@ -102,7 +102,7 @@
                   <tr>
                     <td><label>Price : </label></td>
                     <td>
-                         <asp:TextBox ID="priceTxt" runat="server"></asp:TextBox>
+                         <asp:TextBox ID="priceTxt" runat="server" TextMode="Number"></asp:TextBox>
                     </td>
                 </tr>
 

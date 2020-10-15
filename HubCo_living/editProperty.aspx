@@ -114,6 +114,72 @@
                         <asp:RadioButton ID="RadioButton2" runat="server" Text="Unavailable" GroupName="availability"/>
                     </td>
                 </tr>
+
+                <tr>
+                    <td><label>Price : </label></td>
+                    <td>
+                         <asp:TextBox ID="priceTxt" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td><label>Bathroom : </label></td>
+                    <td>
+                        <asp:RadioButton ID="bathroomRB1" runat="server" Text="Private" GroupName="bathroom" Checked="true"/>
+                        <asp:RadioButton ID="bathroomRB2" runat="server" Text="Shared" GroupName="bathroom"/>
+                    </td>
+                </tr>
+
+                    <tr>
+                    <td><label>Bathroom Quantity : </label></td>
+                    <td>
+                        <asp:TextBox ID="bathroomQtyTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
+                    </td>
+                </tr>
+
+                    <tr>
+                    <td><label>Bed : </label></td>
+                    <td>
+                         
+                         <asp:DropDownList ID="bedDDL" runat="server" Width="246px">
+                            <asp:ListItem>King size</asp:ListItem>
+                            <asp:ListItem>Queen size</asp:ListItem>
+                            <asp:ListItem>Super Single</asp:ListItem> 
+                        </asp:DropDownList>
+                  
+                    </td>
+                </tr>
+
+                    <tr>
+                    <td><label>Bed Quantity : </label></td>
+                    <td>
+                        <asp:TextBox ID="bedQtyTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td><label>Bathtub : </label></td>
+                    <td>
+                        <asp:RadioButton ID="bathtubRB1" runat="server" Text="Yes" GroupName="Bathtub" Checked="true"/>
+                        <asp:RadioButton ID="bathtubRB2" runat="server" Text="No" GroupName="Bathtub"/>
+                    </td>
+                </tr>
+
+                   <tr>
+                    <td><label>TV : </label></td>
+                    <td>
+                        <asp:RadioButton ID="tvRB1" runat="server" Text="Yes" GroupName="tv" Checked="true"/>
+                        <asp:RadioButton ID="tvRB2" runat="server" Text="No" GroupName="tv"/>
+                    </td>
+                </tr>
+
+                   <tr>
+                    <td><label>Balcony : </label></td>
+                    <td>
+                        <asp:RadioButton ID="balconyRB1" runat="server" Text="Yes" GroupName="Balcony" Checked="true"/>
+                        <asp:RadioButton ID="balconyRB2" runat="server" Text="No" GroupName="Balcony"/>
+                    </td>
+                </tr>
             </table>
             <br />
             <asp:Button ID="btnCancel" runat="server"  Text="Back" OnClick="btnCancel_Click" />
