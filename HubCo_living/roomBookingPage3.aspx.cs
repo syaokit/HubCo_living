@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
-    
+
     public partial class roomBookingPage3 : System.Web.UI.Page
     {
         List<DateTime> invalidDate = new List<DateTime>();
-         
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             RepeaterData();
-         }
+        }
 
         protected string GetImage(object img)
         {
@@ -32,7 +29,7 @@ namespace HubCo_living
         {
             String roomID = Application["roomID"].ToString();
 
-            
+
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
@@ -51,22 +48,22 @@ namespace HubCo_living
                 cityLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
                 stateLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
                 statusLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["status"]);
-                priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"])) ;
+                priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"]));
 
                 Session["price"] = double.Parse(ds.Tables[0].Rows[0]["price"].ToString());
 
                 roomNameLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomName"]);
                 roomSegmentLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomSegment"]);
                 roomTypeLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomType"]);
-                bathroomLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathroom"])   + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bathroomQty"]);
+                bathroomLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathroom"]) + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bathroomQty"]);
                 bedLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bed"]) + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bedQty"]);
                 bathtubLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathtub"]);
                 tvLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["tv"]);
                 balconyLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["balcony"]);
 
-                 
 
-                
+
+
                 con.Close();
             }
             catch (Exception ex)
@@ -85,7 +82,7 @@ namespace HubCo_living
         protected void calendar_DayRender(object sender, DayRenderEventArgs e)
         {
             String roomId = Application["roomID"].ToString();
-              
+
 
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
             SqlCommand cmd = new SqlCommand("select * from roombookings where roomId = @roomId ", con);
@@ -137,17 +134,17 @@ namespace HubCo_living
 
         protected void durationTxt_TextChanged(object sender, EventArgs e)
         {
-            int duration = int.Parse(durationTxt.Text.ToString()) ;
+            int duration = int.Parse(durationTxt.Text.ToString());
             DateTime startDate = DateTime.Parse(startDateLbl.Text.ToString());
             DateTime endDate = startDate.AddDays(duration);
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 
             int num = 1;
-            for(int i=0; i<duration;i++)
+            for (int i = 0; i < duration; i++)
             {
                 DateTime d = startDate.AddDays(num);
-                foreach(DateTime dt in newList)
+                foreach (DateTime dt in newList)
                 {
                     if (d == dt)
                     {
@@ -159,17 +156,17 @@ namespace HubCo_living
                         resultLbl.Text = "valid date";
 
                         double total = (Double)Session["price"] * (Double)duration;
-                        totalLbl.Text = "RM" + String.Format("{0:0.00}",  total);
+                        totalLbl.Text = "RM" + String.Format("{0:0.00}", total);
                     }
-                        
+
                 }
                 num++;
             }
 
 
-            
+
             endDateLbl.Text = endDate.ToShortDateString();
-           
+
         }
     }
 }

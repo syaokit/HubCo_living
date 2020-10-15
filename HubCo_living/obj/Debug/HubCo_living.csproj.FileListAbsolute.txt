@@ -65,7 +65,6 @@ C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\roslyn\VBC
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CoreCompileInputs.cache
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CopyComplete
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.dll

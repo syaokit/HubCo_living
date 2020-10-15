@@ -118,7 +118,7 @@
                 <tr>
                     <td><label>Price : </label></td>
                     <td>
-                         <asp:TextBox ID="priceTxt" runat="server"></asp:TextBox>
+                         <asp:TextBox ID="priceTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
                     </td>
                 </tr>
 
@@ -133,7 +133,11 @@
                     <tr>
                     <td><label>Bathroom Quantity : </label></td>
                     <td>
-                        <asp:TextBox ID="bathroomQtyTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
+                        <asp:DropDownList ID="ddlBath" runat="server" Width="246px">
+                            <asp:ListItem>0</asp:ListItem>
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
 
@@ -153,7 +157,14 @@
                     <tr>
                     <td><label>Bed Quantity : </label></td>
                     <td>
-                        <asp:TextBox ID="bedQtyTxt" runat="server" TextMode="Number" min="0"></asp:TextBox>
+                        <asp:DropDownList ID="ddlBed" runat="server" Width="246px">
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>3</asp:ListItem>
+                            <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
 

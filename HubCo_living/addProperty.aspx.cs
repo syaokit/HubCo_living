@@ -31,8 +31,8 @@ namespace HubCo_living
             double price = double.Parse(priceTxt.Text);
             StringBuilder error = new StringBuilder();
             String bed = bedDDL.SelectedValue;
-            int bathroomQty = int.Parse(bathroomQtyTxt.Text);
-            int bedQty = int.Parse(bedQtyTxt.Text);
+            int bathroomQty = int.Parse(ddlBath.SelectedValue);
+            int bedQty = int.Parse(ddlBed.Text);
 
             int roomID = 0;
 
@@ -82,24 +82,6 @@ namespace HubCo_living
                                     }
                                     else
                                     {
-                                        // Validation for price
-                                        if (price <= 0)
-                                        {
-                                            error.AppendLine("Price have to be more than RM 0.");
-                                        }
-
-                                        // Validation for bathroom quantity
-                                        if (bathroomQty < 0)
-                                        {
-                                            error.AppendLine("Bathroom quantity cannot be a negative value.");
-                                        }
-
-                                        // Validation for bed quantity
-                                        if (bedQty <= 0)
-                                        {
-                                            error.AppendLine("Bed quantity cannot be less than 1.");
-                                        }
-
                                         if (error.Length == 0)
                                         {
                                             try
@@ -207,12 +189,8 @@ namespace HubCo_living
                                             {
                                                 Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
                                             }
-                                            else
-                                            {
 
-                                            }
                                         }
-
 
                                     }
                                 }
@@ -287,5 +265,6 @@ namespace HubCo_living
                 return false;
         }
 
+        
     }
 }

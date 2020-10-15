@@ -8,19 +8,23 @@ namespace HubCo_living
 {
     public partial class EditProperty : System.Web.UI.Page
     {
+        private SqlCommand cmd;
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cheem\source\repos\HubCo_living\HubCo_living\App_Data\db.mdf;Integrated Security=True;");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 RepeaterData();
             }
+
         }
 
         private void RepeaterData()
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\App_Data\db.mdf;Integrated Security=True;");
+                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cheem\source\repos\HubCo_living\HubCo_living\App_Data\db.mdf;Integrated Security=True;");
                 SqlCommand cmd = new SqlCommand("select * from ( select a.*, b.imageContent, ROW_NUMBER() over(partition by a.roomID order by a.roomID) as rownum from Rooms a, PropertyImages b where a.roomID=b.roomID) as c where c.rownum=1;", con);
                 con.Open();
                 DataSet ds = new DataSet();
@@ -41,7 +45,7 @@ namespace HubCo_living
             if (e.CommandName == "ImageClick")
             {
                 Application["roomID"] = e.CommandArgument.ToString();
-                Response.Redirect("editProperty.aspx");
+                Response.Redirect("EditProperty.aspx");
             }
         }
         protected string GetImage(object img)

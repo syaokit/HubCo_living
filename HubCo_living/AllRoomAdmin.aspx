@@ -2,15 +2,9 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style>
-        .pictures{
-            height:150px;
-            width:150px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +18,7 @@
                             <tr>
                                 <td colspan="2">
 
-                                    <asp:ImageButton ID="propImage" runat="server" ImageUrl='<%# GetImage(Eval("imageContent"))  %>'  OnCommand="Image_Click" CommandName="ImageClick" CommandArgument='<%# Eval("roomID") %>' CssClass="pictures"/>
+                                    <asp:ImageButton ID="propImage" runat="server" ImageUrl='<%# GetImage(Eval("imageContent"))  %>'  OnCommand="Image_Click" CommandName="ImageClick" CommandArgument='<%# Eval("roomID") %>'/>
                                     
                                 </td>
                                 <td>
