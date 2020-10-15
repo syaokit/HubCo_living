@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -28,7 +29,7 @@ namespace HubCo_living
             String city = txtCity.Text;
             String state = ddlState.SelectedValue;
             double price = double.Parse(priceTxt.Text);
-
+            StringBuilder error = new StringBuilder();
             String bed = bedDDL.SelectedValue;
             int bathroomQty = int.Parse(bathroomQtyTxt.Text);
             int bedQty = int.Parse(bedQtyTxt.Text);
@@ -42,7 +43,6 @@ namespace HubCo_living
             }
             else
             {
-
                 // Verify post code length and type
                 if (postcode.Length < 5)
                 {
@@ -54,7 +54,6 @@ namespace HubCo_living
                     //Check if postal code is only numbers
                     if (IsDigit(postcode))
                     {
-
                         int postnumber = int.Parse(postcode);
 
                         //Check whether postal code within range
@@ -64,7 +63,6 @@ namespace HubCo_living
                         }
                         else
                         {
-
                             //Check whether city is in alphabets only
                             if (IsLetter(city))
                             {
@@ -84,111 +82,138 @@ namespace HubCo_living
                                     }
                                     else
                                     {
-                                        try
+                                        // Validation for price
+                                        if (price <= 0)
                                         {
-                                            // Uplaod property data
-                                            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
-                                            SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomSegment, @roomType, @roomName, @address, @unitNumber, @status, @postcode, @city, @state,@price," +
-                                                "@bathroom, @bathroomQty, @bed, @bedQty, @bathtub , @tv, @balcony) ", con);
-                                            con.Open();
-                                            cmd.Parameters.AddWithValue("@roomSegment", roomSegment);
-                                            cmd.Parameters.AddWithValue("@roomType", roomType);
-                                            cmd.Parameters.AddWithValue("@roomName", roomName);
-                                            cmd.Parameters.AddWithValue("@address", address);
-                                            cmd.Parameters.AddWithValue("@unitNumber", unitNo);
-                                            cmd.Parameters.AddWithValue("@postcode", postcode);
-                                            cmd.Parameters.AddWithValue("@city", city);
-                                            cmd.Parameters.AddWithValue("@state", state);
-                                            cmd.Parameters.AddWithValue("@price", price);
-                                            cmd.Parameters.AddWithValue("@bathroomQty", bathroomQty);
-                                            cmd.Parameters.AddWithValue("@bedQty", bedQty);
-                                            cmd.Parameters.AddWithValue("@bed", bed);
+                                            error.AppendLine("Price have to be more than RM 0.");
+                                        }
 
-                                            if (bathroomRB1.Checked)
-                                                cmd.Parameters.AddWithValue("@bathroom", bathroomRB1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@bathroom", bathroomRB2.Text);
+                                        // Validation for bathroom quantity
+                                        if (bathroomQty < 0)
+                                        {
+                                            error.AppendLine("Bathroom quantity cannot be a negative value.");
+                                        }
 
+                                        // Validation for bed quantity
+                                        if (bedQty <= 0)
+                                        {
+                                            error.AppendLine("Bed quantity cannot be less than 1.");
+                                        }
 
-                                            if (bathtubRB1.Checked)
-                                                cmd.Parameters.AddWithValue("@bathtub", bathtubRB1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@bathtub", bathtubRB2.Text);
-
-                                            if (tvRB1.Checked)
-                                                cmd.Parameters.AddWithValue("@tv", tvRB1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@tv", tvRB2.Text);
-
-                                            if (balconyRB1.Checked)
-                                                cmd.Parameters.AddWithValue("@balcony", balconyRB1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@balcony", balconyRB2.Text);
-
-
-                                            if (RadioButton1.Checked)
-                                                cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
-                                            else
-                                                cmd.Parameters.AddWithValue("@status", RadioButton2.Text);
-                                            cmd.ExecuteNonQuery();
-                                            con.Close();
-
-
-
-                                            // Get property id
-                                            cmd = new SqlCommand("select roomID from Rooms where unitNumber=@unitNumber and address=@address ", con);
-                                            con.Open();
-                                            cmd.Parameters.AddWithValue("@address", address);
-                                            cmd.Parameters.AddWithValue("@unitNumber", unitNo);
-                                            SqlDataReader reader = cmd.ExecuteReader();
-
-                                            if (reader.Read())
+                                        if (error.Length == 0)
+                                        {
+                                            try
                                             {
-                                                roomID = int.Parse(reader["roomID"].ToString());
-                                            }
-                                            if (roomID == 0)
-                                            {
-                                                Response.Write("<script language=javascript>alert('An error occured when uploading the photos.')</script>");
-                                            }
-                                            else
-                                            {
-                                                // Upload photo
-                                                foreach (HttpPostedFile postedFile in filUpPictures.PostedFiles)
+                                                // Uplaod property data
+                                                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
+                                                SqlCommand cmd = new SqlCommand("insert into Rooms values (@roomSegment, @roomType, @roomName, @address, @unitNumber, @status, @postcode, @city, @state,@price," +
+                                                    "@bathroom, @bathroomQty, @bed, @bedQty, @bathtub , @tv, @balcony) ", con);
+                                                con.Open();
+                                                cmd.Parameters.AddWithValue("@roomSegment", roomSegment);
+                                                cmd.Parameters.AddWithValue("@roomType", roomType);
+                                                cmd.Parameters.AddWithValue("@roomName", roomName);
+                                                cmd.Parameters.AddWithValue("@address", address);
+                                                cmd.Parameters.AddWithValue("@unitNumber", unitNo);
+                                                cmd.Parameters.AddWithValue("@postcode", postcode);
+                                                cmd.Parameters.AddWithValue("@city", city);
+                                                cmd.Parameters.AddWithValue("@state", state);
+                                                cmd.Parameters.AddWithValue("@price", price);
+                                                cmd.Parameters.AddWithValue("@bathroomQty", bathroomQty);
+                                                cmd.Parameters.AddWithValue("@bedQty", bedQty);
+                                                cmd.Parameters.AddWithValue("@bed", bed);
+
+                                                if (bathroomRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathroom", bathroomRB2.Text);
+
+
+                                                if (bathtubRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@bathtub", bathtubRB2.Text);
+
+                                                if (tvRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@tv", tvRB2.Text);
+
+                                                if (balconyRB1.Checked)
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@balcony", balconyRB2.Text);
+
+
+                                                if (RadioButton1.Checked)
+                                                    cmd.Parameters.AddWithValue("@status", RadioButton1.Text);
+                                                else
+                                                    cmd.Parameters.AddWithValue("@status", RadioButton2.Text);
+                                                cmd.ExecuteNonQuery();
+                                                con.Close();
+
+
+
+                                                // Get property id
+                                                cmd = new SqlCommand("select roomID from Rooms where unitNumber=@unitNumber and address=@address ", con);
+                                                con.Open();
+                                                cmd.Parameters.AddWithValue("@address", address);
+                                                cmd.Parameters.AddWithValue("@unitNumber", unitNo);
+                                                SqlDataReader reader = cmd.ExecuteReader();
+
+                                                if (reader.Read())
                                                 {
-                                                    String fileName = Path.GetFileName(postedFile.FileName);
-                                                    String type = postedFile.ContentType;
-
-                                                    using (Stream stream = postedFile.InputStream)
+                                                    roomID = int.Parse(reader["roomID"].ToString());
+                                                }
+                                                if (roomID == 0)
+                                                {
+                                                    Response.Write("<script language=javascript>alert('An error occured when uploading the photos.')</script>");
+                                                }
+                                                else
+                                                {
+                                                    // Upload photo
+                                                    foreach (HttpPostedFile postedFile in filUpPictures.PostedFiles)
                                                     {
-                                                        using (BinaryReader br = new BinaryReader(stream))
+                                                        String fileName = Path.GetFileName(postedFile.FileName);
+                                                        String type = postedFile.ContentType;
+
+                                                        using (Stream stream = postedFile.InputStream)
                                                         {
-                                                            byte[] bytes = br.ReadBytes((Int32)stream.Length);
-
-                                                            using (
-                                                            SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;"))
+                                                            using (BinaryReader br = new BinaryReader(stream))
                                                             {
-                                                                String query = "insert into PropertyImages values(@images, @roomID)";
-                                                                using (SqlCommand cmdInImg = new SqlCommand(query))
-                                                                {
-                                                                    cmdInImg.Connection = con1;
-                                                                    cmdInImg.Parameters.AddWithValue("@images", bytes);
-                                                                    cmdInImg.Parameters.AddWithValue("@roomID", roomID);
-                                                                    con1.Open();
-                                                                    cmdInImg.ExecuteNonQuery();
-                                                                    con1.Close();
+                                                                byte[] bytes = br.ReadBytes((Int32)stream.Length);
 
+                                                                using (
+                                                                SqlConnection con1 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;"))
+                                                                {
+                                                                    String query = "insert into PropertyImages values(@images, @roomID)";
+                                                                    using (SqlCommand cmdInImg = new SqlCommand(query))
+                                                                    {
+                                                                        cmdInImg.Connection = con1;
+                                                                        cmdInImg.Parameters.AddWithValue("@images", bytes);
+                                                                        cmdInImg.Parameters.AddWithValue("@roomID", roomID);
+                                                                        con1.Open();
+                                                                        cmdInImg.ExecuteNonQuery();
+                                                                        con1.Close();
+
+                                                                    }
                                                                 }
                                                             }
                                                         }
                                                     }
+                                                    Response.Write("<script language=javascript>alert('Room Successfully Added.')</script>");
                                                 }
-                                                Response.Write("<script language=javascript>alert('Room Successfully Added.')</script>");
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
+                                            }
+                                            else
+                                            {
+
                                             }
                                         }
-                                        catch (Exception ex)
-                                        {
-                                            Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
-                                        }
+
+
                                     }
                                 }
                             }
