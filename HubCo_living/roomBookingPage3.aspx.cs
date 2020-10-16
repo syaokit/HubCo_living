@@ -10,17 +10,17 @@ using System.Web.UI.WebControls;
 
 namespace HubCo_living
 {
-    
+
     public partial class roomBookingPage3 : System.Web.UI.Page
     {
         List<DateTime> invalidDate = new List<DateTime>();
         List<DateTime> calDate = new List<DateTime>();
-         
+
         protected void Page_Load(object sender, EventArgs e)
         {
-             
+
             RepeaterData();
-         }
+        }
 
         protected string GetImage(object img)
         {
@@ -32,7 +32,7 @@ namespace HubCo_living
         {
             String roomID = Application["roomID"].ToString();
 
-            
+
             try
             {
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
@@ -51,22 +51,22 @@ namespace HubCo_living
                 cityLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["city"]);
                 stateLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["state"]);
                 statusLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["status"]);
-                priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"])) ;
+                priceLbl.Text = "RM" + String.Format("{0:0.00}", Convert.ToString(ds.Tables[0].Rows[0]["price"]));
 
                 Session["price"] = double.Parse(ds.Tables[0].Rows[0]["price"].ToString());
 
                 roomNameLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomName"]);
                 roomSegmentLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomSegment"]);
                 roomTypeLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["roomType"]);
-                bathroomLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathroom"])   + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bathroomQty"]);
+                bathroomLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathroom"]) + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bathroomQty"]);
                 bedLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bed"]) + " Quantity :" + Convert.ToString(ds.Tables[0].Rows[0]["bedQty"]);
                 bathtubLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["bathtub"]);
                 tvLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["tv"]);
                 balconyLbl.Text = Convert.ToString(ds.Tables[0].Rows[0]["balcony"]);
 
-                 
 
-                
+
+
                 con.Close();
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace HubCo_living
         protected void calendar_DayRender(object sender, DayRenderEventArgs e)
         {
             String roomId = Application["roomID"].ToString();
-           
+
 
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|db.mdf;Integrated Security=True;");
             SqlCommand cmd = new SqlCommand("select * from roombookings where roomId = @roomId ", con);
@@ -94,7 +94,7 @@ namespace HubCo_living
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                if (reader.Read())
+                while (reader.Read())
                 {
                     DateTime startDate = DateTime.Parse(reader["startDate"].ToString());
                     DateTime endDate = DateTime.Parse(reader["endDate"].ToString());
@@ -128,15 +128,15 @@ namespace HubCo_living
 
             List<DateTime> newList = (List<DateTime>)Session["calDate"];
 
-            if(newList != null)
+            if (newList != null)
             {
-             foreach(DateTime dt in newList)
-                        {
-                            if (e.Day.Date == dt)
-                                e.Cell.BackColor = Color.LightGreen;
-                        }
+                foreach (DateTime dt in newList)
+                {
+                    if (e.Day.Date == dt)
+                        e.Cell.BackColor = Color.LightGreen;
+                }
             }
-           
+
         }
 
         protected void calendar_SelectionChanged(object sender, EventArgs e)
@@ -150,7 +150,7 @@ namespace HubCo_living
 
         protected void durationTxt_TextChanged(object sender, EventArgs e)
         {
-            int duration = int.Parse(durationTxt.Text.ToString()) ;
+            int duration = int.Parse(durationTxt.Text.ToString());
             DateTime startDate = DateTime.Parse(startDateLbl.Text.ToString());
             DateTime endDate = startDate.AddDays(duration);
 
@@ -162,41 +162,58 @@ namespace HubCo_living
             calDate.Clear();
             bool valid = true;
             int num = 1;
-            for(int i=0; i<duration;i++)
+
+            for (int i = 0; i < duration; i++)
             {
                 DateTime d = startDate.AddDays(num);
-                foreach(DateTime dt in newList)
+
+                if (newList.Count != 0)
                 {
-                    if (d == dt)
+                    foreach (DateTime dt in newList)
                     {
-                        resultLbl.Text = "Invalid date";
-                        proceedBtn.Enabled = false;
-                        valid = false;
-                        break;
+
+                        if (d == dt)
+                        {
+                            resultLbl.Text = "Invalid date";
+                            proceedBtn.Enabled = false;
+                            valid = false;
+                            break;
+
+                        }
+                        else
+                        {
+                            proceedBtn.Enabled = true;
+                            resultLbl.Text = "valid date";
+
+                            double total = (Double)Session["price"] * (Double)duration;
+                            totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+                            Application["paymentAmount"] = total;
+                            calDate.Add(d);
+                        }
+
                          
                     }
-                    else
-                    {
-                        proceedBtn.Enabled = true;
-                        resultLbl.Text = "valid date";
 
-                        double total = (Double)Session["price"] * (Double)duration;
-                        totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+                }
+                else
+                {
+                    proceedBtn.Enabled = true;
+                    resultLbl.Text = "valid date";
 
-                        calDate.Add(d);
-                    }
-                        
+                    double total = (Double)Session["price"] * (Double)duration;
+                    totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+                    Application["paymentAmount"] = total;
+                    calDate.Add(d);
                 }
                 num++;
 
                 if (valid == false)
                     break;
             }
-
             Session["calDate"] = calDate;
-            
+
             endDateLbl.Text = endDate.ToShortDateString();
-           
+
         }
     }
 }

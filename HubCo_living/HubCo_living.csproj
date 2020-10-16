@@ -83,6 +83,10 @@
     <Content Include="Global.asax" />
     <Content Include="roomBookingPage1.aspx" />
     <Content Include="roomBookingPage4.aspx" />
+    <Content Include="serviceReqPage1.aspx" />
+    <Content Include="viewBookingPage1.aspx" />
+    <Content Include="viewPaymentHistoryPage1.aspx" />
+    <Content Include="viewServiceReqPage1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +170,34 @@
     </Compile>
     <Compile Include="roomBookingPage4.aspx.designer.cs">
       <DependentUpon>roomBookingPage4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="serviceReqPage1.aspx.cs">
+      <DependentUpon>serviceReqPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="serviceReqPage1.aspx.designer.cs">
+      <DependentUpon>serviceReqPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewBookingPage1.aspx.cs">
+      <DependentUpon>viewBookingPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewBookingPage1.aspx.designer.cs">
+      <DependentUpon>viewBookingPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewPaymentHistoryPage1.aspx.cs">
+      <DependentUpon>viewPaymentHistoryPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewPaymentHistoryPage1.aspx.designer.cs">
+      <DependentUpon>viewPaymentHistoryPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewServiceReqPage1.aspx.cs">
+      <DependentUpon>viewServiceReqPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewServiceReqPage1.aspx.designer.cs">
+      <DependentUpon>viewServiceReqPage1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
