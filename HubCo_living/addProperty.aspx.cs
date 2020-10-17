@@ -34,7 +34,7 @@ namespace HubCo_living
             int roomID = 0;
 
             //Make sure all fields filled up
-            if (roomSegment.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Length == 0)
+            if (roomSegment.Length == 0 || address.Length == 0 || unitNo.Length == 0 || postcode.Length == 0 || city.Length == 0 || state.Equals("0") || roomName.Length == 0)
             {
                 Response.Write("<script language=javascript>alert('Please fill in all fields.')</script>");
             }

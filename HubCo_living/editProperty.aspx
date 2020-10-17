@@ -80,7 +80,11 @@
 
 
             <table>
-                
+                <tr>
+                    <td><label>Room Name : </label></td>
+                    <td><asp:TextBox ID="roomNameTxt" runat="server"></asp:TextBox></td>
+                </tr>
+
                 <tr>
                     <td><label>Address : </label></td>
                     <td><asp:TextBox ID="txtAddress" runat="server"></asp:TextBox></td>
@@ -119,7 +123,15 @@
                         </asp:DropDownList>
                       </td>
                 </tr>
-                
+                <tr>
+                    <td><label>Room Segment : </label></td>
+                    <td>
+                        <asp:DropDownList ID="segmentDDL" runat="server" Width="246px">
+                            <asp:ListItem>Apartment co-living</asp:ListItem>
+                            <asp:ListItem>Hotel co-living</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
                 <tr>
                     <td><label>Room Type : </label></td>
                     <td>
