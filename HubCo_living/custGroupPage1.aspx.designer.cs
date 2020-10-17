@@ -11,7 +11,7 @@ namespace HubCo_living
 {
 
 
-    public partial class hi
+    public partial class custGroupPage1
     {
 
         /// <summary>

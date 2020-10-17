@@ -11,7 +11,11 @@ namespace HubCo_living
     public partial class roomBookingPage3 : System.Web.UI.Page
     {
         List<DateTime> invalidDate = new List<DateTime>();
+<<<<<<< HEAD
 
+=======
+        List<DateTime> calDate = new List<DateTime>();
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -91,7 +95,7 @@ namespace HubCo_living
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                if (reader.Read())
+                while (reader.Read())
                 {
                     DateTime startDate = DateTime.Parse(reader["startDate"].ToString());
                     DateTime endDate = DateTime.Parse(reader["endDate"].ToString());
@@ -121,6 +125,19 @@ namespace HubCo_living
             {
                 e.Day.IsSelectable = false;
             }
+
+
+            List<DateTime> newList = (List<DateTime>)Session["calDate"];
+
+            if (newList != null)
+            {
+                foreach (DateTime dt in newList)
+                {
+                    if (e.Day.Date == dt)
+                        e.Cell.BackColor = Color.LightGreen;
+                }
+            }
+
         }
 
         protected void calendar_SelectionChanged(object sender, EventArgs e)
@@ -140,31 +157,80 @@ namespace HubCo_living
 
             List<DateTime> newList = (List<DateTime>)Session["invalidDate"];
 
+            Application["startDate"] = startDate;
+            Application["endDate"] = endDate;
+
+            calDate.Clear();
+            bool valid = true;
             int num = 1;
+<<<<<<< HEAD
             for (int i = 0; i < duration; i++)
             {
                 DateTime d = startDate.AddDays(num);
                 foreach (DateTime dt in newList)
-                {
-                    if (d == dt)
-                    {
-                        resultLbl.Text = "Invalid date";
-                        break;
-                    }
-                    else
-                    {
-                        resultLbl.Text = "valid date";
+=======
 
+            for (int i = 0; i < duration; i++)
+            {
+                DateTime d = startDate.AddDays(num);
+
+                if (newList.Count != 0)
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
+                {
+                    foreach (DateTime dt in newList)
+                    {
+
+<<<<<<< HEAD
                         double total = (Double)Session["price"] * (Double)duration;
                         totalLbl.Text = "RM" + String.Format("{0:0.00}", total);
                     }
 
+=======
+                        if (d == dt)
+                        {
+                            resultLbl.Text = "Invalid date";
+                            proceedBtn.Enabled = false;
+                            valid = false;
+                            break;
+
+                        }
+                        else
+                        {
+                            proceedBtn.Enabled = true;
+                            resultLbl.Text = "valid date";
+
+                            double total = (Double)Session["price"] * (Double)duration;
+                            totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+                            Application["paymentAmount"] = total;
+                            calDate.Add(d);
+                        }
+
+                         
+                    }
+
+                }
+                else
+                {
+                    proceedBtn.Enabled = true;
+                    resultLbl.Text = "valid date";
+
+                    double total = (Double)Session["price"] * (Double)duration;
+                    totalLbl.Text = "RM" + String.Format("{0:0.00}", total); ;
+                    Application["paymentAmount"] = total;
+                    calDate.Add(d);
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
                 }
                 num++;
+
+                if (valid == false)
+                    break;
             }
+            Session["calDate"] = calDate;
 
+<<<<<<< HEAD
 
-
+=======
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
             endDateLbl.Text = endDate.ToShortDateString();
 
         }

@@ -181,12 +181,25 @@ namespace HubCo_living
                                                         }
                                                     }
                                                 }
+<<<<<<< HEAD
                                                 Response.Write("<script language=javascript>alert('Room Successfully Added.')</script>");
                                             }
                                         }
                                         catch (Exception ex)
                                         {
                                             Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
+=======
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Response.Write("<script language=javascript>alert('An error occured please try again.')</script>");
+                                            }
+                                       
+                                        }
+                                        else
+                                        {
+
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
                                         }
 
                                     }

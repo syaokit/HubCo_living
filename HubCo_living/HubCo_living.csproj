@@ -72,12 +72,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addProperty.aspx" />
+<<<<<<< HEAD
     <Content Include="AllCustomersAdmin.aspx" />
     <Content Include="AllCustPayment.aspx" />
     <Content Include="AllPropertyAdmin.aspx" />
     <Content Include="custDetailsAdmin.aspx" />
     <Content Include="EditProperty.aspx" />
     <Content Include="hi.aspx" />
+=======
+    <Content Include="custEventPage1.aspx" />
+    <Content Include="custGroupPage1.aspx" />
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
     <Content Include="roomBookingPage2.aspx" />
     <Content Include="roomBookingPage3.aspx" />
     <Content Include="App_Data\db.mdf" />
@@ -93,8 +98,15 @@
     <Content Include="Global.asax" />
     <Content Include="roomBookingPage1.aspx" />
     <Content Include="roomBookingPage4.aspx" />
+    <Content Include="serviceReqPage1.aspx" />
+    <Content Include="viewBookingPage1.aspx" />
+    <Content Include="viewPaymentHistoryPage1.aspx" />
+    <Content Include="viewServiceReqPage1.aspx" />
     <Content Include="Web.config" />
+<<<<<<< HEAD
     <Content Include="WebForm3.aspx" />
+=======
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addProperty.aspx.cs">
@@ -104,6 +116,7 @@
     <Compile Include="addProperty.aspx.designer.cs">
       <DependentUpon>addProperty.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="AllCustomersAdmin.aspx.cs">
       <DependentUpon>AllCustomersAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,10 +154,21 @@
     </Compile>
     <Compile Include="hi.aspx.cs">
       <DependentUpon>hi.aspx</DependentUpon>
+=======
+    <Compile Include="custEventPage1.aspx.cs">
+      <DependentUpon>custEventPage1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="hi.aspx.designer.cs">
-      <DependentUpon>hi.aspx</DependentUpon>
+    <Compile Include="custEventPage1.aspx.designer.cs">
+      <DependentUpon>custEventPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="custGroupPage1.aspx.cs">
+      <DependentUpon>custGroupPage1.aspx</DependentUpon>
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="custGroupPage1.aspx.designer.cs">
+      <DependentUpon>custGroupPage1.aspx</DependentUpon>
     </Compile>
     <Compile Include="roomBookingPage2.aspx.cs">
       <DependentUpon>roomBookingPage2.aspx</DependentUpon>
@@ -220,12 +244,42 @@
     <Compile Include="roomBookingPage4.aspx.designer.cs">
       <DependentUpon>roomBookingPage4.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="WebForm3.aspx.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm3.aspx.designer.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>
+=======
+    <Compile Include="serviceReqPage1.aspx.cs">
+      <DependentUpon>serviceReqPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="serviceReqPage1.aspx.designer.cs">
+      <DependentUpon>serviceReqPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewBookingPage1.aspx.cs">
+      <DependentUpon>viewBookingPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewBookingPage1.aspx.designer.cs">
+      <DependentUpon>viewBookingPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewPaymentHistoryPage1.aspx.cs">
+      <DependentUpon>viewPaymentHistoryPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewPaymentHistoryPage1.aspx.designer.cs">
+      <DependentUpon>viewPaymentHistoryPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewServiceReqPage1.aspx.cs">
+      <DependentUpon>viewServiceReqPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewServiceReqPage1.aspx.designer.cs">
+      <DependentUpon>viewServiceReqPage1.aspx</DependentUpon>
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd
     </Compile>
   </ItemGroup>
   <ItemGroup>

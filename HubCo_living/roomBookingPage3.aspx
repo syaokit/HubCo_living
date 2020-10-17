@@ -9,7 +9,7 @@
     <style>
         table tr td {
             border: 2px black solid;
-            width:300px;
+            width: 300px;
         }
 
         .img1 {
@@ -44,7 +44,7 @@
                     City              :<asp:Label ID="cityLbl" runat="server" Text=""></asp:Label><br />
                     State           :<asp:Label ID="stateLbl" runat="server" Text=""></asp:Label><br />
                     Status          :<asp:Label ID="statusLbl" runat="server" Text=""></asp:Label><br />
-                    
+
                 </td>
 
                 <td>Room Name : 
@@ -70,7 +70,7 @@
                             <asp:Label ID="startDateLbl" runat="server" Text=""></asp:Label><br />
                             Duration         : 
                             <asp:TextBox ID="durationTxt" runat="server" Text="1" TextMode="Number" OnTextChanged="durationTxt_TextChanged" AutoPostBack="true" Width="100px" min="1"></asp:TextBox>
-                            Days<br />
+                            Nights<br />
                             End Date        :  
                             <asp:Label ID="endDateLbl" runat="server" Text="" Enabled="false"></asp:Label><br />
                             Result           :  
@@ -81,21 +81,30 @@
                 </td>
 
 
-                   <td>
-                       Price Per Month:
-                       <asp:Label ID="priceLbl" runat="server" Text=""></asp:Label><br /><br /><br />
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            Price Per Month:
+                       <asp:Label ID="priceLbl" runat="server" Text=""></asp:Label><br />
+                            <br />
+                            <br />
 
-                      Total Price:
-                       <asp:Label ID="totalLbl" runat="server" Text=""></asp:Label><br /><br />
+                            Total Price:
+                       <asp:Label ID="totalLbl" runat="server" Text=""></asp:Label><br />
+                            <br />
 
-                       <asp:Button ID="proceedBtn" runat="server" Text="Proceed" OnClick="proceedBtn_Click" />
+
+                            <asp:Button ID="proceedBtn" runat="server" Text="Proceed" OnClick="proceedBtn_Click" Enabled="false" />
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </td>
 
             </tr>
 
 
         </table>
-        
+
 
 
     </form>

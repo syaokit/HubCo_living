@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="hi.aspx.cs" Inherits="HubCo_living.hi" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="custGroupPage1.aspx.cs" Inherits="HubCo_living.custGroupPage1" %>
 
 <!DOCTYPE html>
 
@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1>Customer Group Page 1</h1>
         <div>
         </div>
     </form>

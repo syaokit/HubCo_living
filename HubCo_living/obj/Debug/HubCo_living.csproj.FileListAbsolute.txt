@@ -33,7 +33,6 @@ C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.Co
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CopyComplete
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.dll
 C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.pdb
-C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\HubCo_living.dll.config
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\HubCo_living.dll
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\HubCo_living.pdb
@@ -69,5 +68,9 @@ C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubC
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csproj.CopyComplete
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.dll
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.pdb
+<<<<<<< HEAD
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
 C:\Users\cheem\source\repos\syaokit_new\HubCo_living\HubCo_living\bin\AjaxControlToolkit.dll
+=======
+C:\Users\dmin\Desktop\HubCo_living\HubCo_living\obj\Debug\HubCo_living.csprojAssemblyReference.cache
+>>>>>>> c621517c14b909c63f7b13a91ad34a678b3102cd

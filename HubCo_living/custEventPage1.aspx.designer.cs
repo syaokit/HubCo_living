@@ -11,7 +11,7 @@ namespace HubCo_living
 {
 
 
-    public partial class roomBookingPage4
+    public partial class custEventPage1
     {
 
         /// <summary>
@@ -24,22 +24,31 @@ namespace HubCo_living
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// amountLbl control.
+        /// calendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label amountLbl;
+        protected global::System.Web.UI.WebControls.Calendar calendar;
 
         /// <summary>
-        /// cardNameTxt control.
+        /// rpt1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNameTxt;
+        protected global::System.Web.UI.WebControls.Repeater rpt1;
+
+        /// <summary>
+        /// txtEventName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEventName;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -51,85 +60,31 @@ namespace HubCo_living
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// cardNumTxt1 control.
+        /// lblCreator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNumTxt1;
+        protected global::System.Web.UI.WebControls.Label lblCreator2;
 
         /// <summary>
-        /// cardNumTxt2 control.
+        /// lblDate2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNumTxt2;
+        protected global::System.Web.UI.WebControls.Label lblDate2;
 
         /// <summary>
-        /// cardNumTxt3 control.
+        /// txtTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNumTxt3;
-
-        /// <summary>
-        /// cardNumTxt4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardNumTxt4;
-
-        /// <summary>
-        /// cusCustom3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cusCustom3;
-
-        /// <summary>
-        /// cusCustom1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cusCustom1;
-
-        /// <summary>
-        /// expDDL1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList expDDL1;
-
-        /// <summary>
-        /// expDDL2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList expDDL2;
-
-        /// <summary>
-        /// ccvTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ccvTxt;
+        protected global::System.Web.UI.WebControls.TextBox txtTime;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -141,30 +96,30 @@ namespace HubCo_living
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// cusCustom2 control.
+        /// txtContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cusCustom2;
+        protected global::System.Web.UI.WebControls.TextBox txtContent;
 
         /// <summary>
-        /// confirmBtn control.
+        /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button confirmBtn;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// ValidationSummary1 control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Button btnCreate;
     }
 }
