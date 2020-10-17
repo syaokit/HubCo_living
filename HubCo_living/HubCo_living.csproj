@@ -73,6 +73,7 @@
   <ItemGroup>
     <Content Include="addProperty.aspx" />
     <Content Include="AllCustomersAdmin.aspx" />
+    <Content Include="AllCustPayment.aspx" />
     <Content Include="AllPropertyAdmin.aspx" />
     <Content Include="custDetailsAdmin.aspx" />
     <Content Include="EditProperty.aspx" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="AllCustomersAdmin.aspx.designer.cs">
       <DependentUpon>AllCustomersAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AllCustPayment.aspx.cs">
+      <DependentUpon>AllCustPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllCustPayment.aspx.designer.cs">
+      <DependentUpon>AllCustPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="AllPropertyAdmin.aspx.cs">
       <DependentUpon>AllPropertyAdmin.aspx</DependentUpon>

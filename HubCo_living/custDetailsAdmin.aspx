@@ -231,11 +231,6 @@
         <ajaxToolkit:ModalPopupExtender ID="mpeComplete" runat="server" CancelControlID="btnBack2" 
              PopupControlID="pnlComplete" TargetControlID="lblReqID2" BackgroundCssClass="modalBackground"></ajaxToolkit:ModalPopupExtender>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="select a.serviceRecordID, a.serviceReqID, b.requestType as 'Request Type',  b.descriptions as 'Request Descripion', b.requestDate as 'Request Date', a.description as 'Actions Done', format(a.date, 'dd-MM-yyyy') as 'Date Completed', a.time as 'Time Completed', 
-       c.roomID as 'Room ID', concat(c.unitNumber,', ',address, ', ', c.city , ', ', c.postcode ,', ', c.state) as 'Room Address', a.cost as 'Cost (RM)'
-from serviceRecords a, serviceRequests b, Rooms c
-where a.serviceReqID = b.serviceReqID and a.roomID=c.roomID and b.roomID=c.roomID and b.customerID=10002"></asp:SqlDataSource>
-
     </form>
 </body>
 </html>
